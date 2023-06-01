@@ -12,7 +12,7 @@ with open(base_datos, "r") as db:
             tablaVentas = json.load(db);
 
 def buscar_Numero ():
-    numero = value_int_input("Ingrese el numero del registro a modificar: ", "Tipo de entrada no válida: ")
+    numero = input("Ingrese el numero del registro a modificar: ")
     for i in range(len(tablaVentas[0])):
         if tablaVentas[0][i] == numero:
             encontrado = True;
@@ -29,6 +29,14 @@ def value_int_input (msj1, msj2):
         except ValueError:
             error_mensaje = msj2
 
+def menu_modificar(msj1. msj2):
+    error_mensaje = msj1
+    while True:
+        try:
+            input_value = int(input(error_mensaje))
+            return input_value
+        except ValueError:
+            error_mensaje = msj2
 
 def AgregarVenta():
     print("------------Ingresar un nuevo registro-------------")
@@ -53,7 +61,6 @@ def AgregarVenta():
 def ModificarVenta():
 
     encontrado, i = buscar_Numero()
-
     if encontrado == True:
         opcion = int(input("¿Qué desea cambiar de este registro?\n 1. Numero\n 2. Compania telefónica\n 3. Modelo de Teléfono\n 4. Nombre propietario\n 5. Dirección\n 6.Tipo pago\n  Ingrese su opcion: "));
         if opcion == 1:
@@ -84,6 +91,7 @@ def ModificarVenta():
             print("Seleccione una de las opciones antes mostradas.\n");
     else:
         print("Numero no encontrado")
+        ModificarVenta()
     Actualizar();
 
 def EliminarDatos():
@@ -120,7 +128,7 @@ while opcion != 5:
     print("Acciones disponibles: ")
     print("1. Ingresar nueva venta");
     print("2. Modificar una venta");
-    print("3. Eliminar una venta")
+    print("3. Eliminar una venta");
     print("4. Mostrar ventas");
     print("5. Salir");
     opcion = int(input("Seleccione la acción a realizar: "));
