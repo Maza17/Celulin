@@ -29,14 +29,6 @@ def value_int_input (msj1, msj2):
         except ValueError:
             error_mensaje = msj2
 
-def menu_modificar(msj1. msj2):
-    error_mensaje = msj1
-    while True:
-        try:
-            input_value = int(input(error_mensaje))
-            return input_value
-        except ValueError:
-            error_mensaje = msj2
 
 def AgregarVenta():
     print("------------Ingresar un nuevo registro-------------")
