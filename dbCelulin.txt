@@ -1,1 +1,1 @@
-[[0, "75155829"], [0, "Claro"], [0, "Samsung A30s"], [0, "Daniel Juarez"], [0, "Quezaltepeque, La Libertad"], [0, "Pospago"]]
+[[0, ""], [0, "Claro"], [0, "Samsung A30s"], [0, "Selvin"], [0, "Quezaltepeque, La Libertad"], [0, "Pospago"]]
