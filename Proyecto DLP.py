@@ -87,7 +87,7 @@ def EliminarDatos():
     Actualizar();
 
 def MostrarVentas():
-    print("-----Lista de ventas ingresadas-----")
+    print("------Lista de ventas ingresadas------")
     # Recorrer la tabla
     for registro in tablaVentas:
     # Imprimir los elementos a partir del segundo índice
