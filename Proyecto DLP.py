@@ -81,6 +81,7 @@ def ModificarVenta():
             tablaVentas[5][columna] = pagonuevo;
         else: 
             print("Seleccione una de las opciones antes mostradas.\n");
+            ModificarVenta()
     else:
         print("Numero no encontrado")
         ModificarVenta()
