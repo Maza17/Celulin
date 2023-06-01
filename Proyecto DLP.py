@@ -1,6 +1,8 @@
 import json
 
-base_datos = "Celulin/dbCelulin.txt"
+
+
+base_datos = "dbCelulin.txt"
 tablaVentas = [[0] , [0] , [0] , [0] , [0] , [0]];
 opcion = 0;
 
@@ -9,13 +11,22 @@ with open(base_datos, "r") as db:
         with open(base_datos,"r") as db:
             tablaVentas = json.load(db);
 
-def Validad_Value_Numero (msj1, msj2):
+def buscar_Numero ():
+    numero = value_int_input("Ingrese el numero del registro a modificar: ", "Tipo de entrada no válida: ")
+    for i in range(len(tablaVentas[0])):
+        if tablaVentas[0][i] == numero:
+            encontrado = True;
+        else:
+            encontrado = False;
+    return encontrado, i;
+
+def value_int_input (msj1, msj2):
     error_mensaje = msj1
     while True:
         try:
             input_value = int(input(error_mensaje))
             return input_value
-        except:
+        except ValueError:
             error_mensaje = msj2
 
 
@@ -40,14 +51,9 @@ def AgregarVenta():
     Actualizar();
 
 def ModificarVenta():
-    numero = input("Ingrese el numero del registro a modificar: ")
-    for i in range(len(tablaVentas[0])):
-        if tablaVentas[0][i] == numero:
-            encontrado = True;
-            break;
-        else:
-            encontrado = False;
-    
+
+    encontrado, i = buscar_Numero()
+
     if encontrado == True:
         opcion = int(input("¿Qué desea cambiar de este registro?\n 1. Numero\n 2. Compania telefónica\n 3. Modelo de Teléfono\n 4. Nombre propietario\n 5. Dirección\n 6.Tipo pago\n  Ingrese su opcion: "));
         if opcion == 1:
@@ -76,6 +82,8 @@ def ModificarVenta():
             tablaVentas[5][columna] = pagonuevo;
         else: 
             print("Seleccione una de las opciones antes mostradas.\n");
+    else:
+        print("Numero no encontrado")
     Actualizar();
 
 def EliminarDatos():
