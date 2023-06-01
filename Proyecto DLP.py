@@ -43,10 +43,11 @@ def ModificarVenta():
             encontrado = False;
     
     while numero.isdigit() != True:
-        try: numero = (input("Ingrese el número del registro a modificar"))
-        ModificarVenta()
+        try: 
+            numero = (input("Ingrese el número del registro a modificar"))
+            ModificarVenta()
         except ValueError: 
-        print("Ingrese un caracter valido")
+            print("Ingrese un caracter valido")
     
     if encontrado == True:
         opcion = int(input("¿Qué desea cambiar de este registro?\n 1. Numero\n 2. Compania telefónica\n 3. Modelo de Teléfono\n 4. Nombre propietario\n 5. Dirección\n 6.Tipo pago\n  Ingrese su opcion: "));
