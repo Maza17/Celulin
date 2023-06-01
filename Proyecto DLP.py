@@ -9,6 +9,7 @@ with open(base_datos, "r") as db:
         with open(base_datos,"r") as db:
             tablaVentas = json.load(db);
 
+
 def AgregarVenta():
     print("------------Ingresar un nuevo registro-------------")
     numtelefono = input("Ingrese el número de teléfono: ")
@@ -37,6 +38,12 @@ def ModificarVenta():
             break;
         else:
             encontrado = False;
+    
+    while numero.isdigit() != True:
+        try: numero = (input("Ingrese el número del registro a modificar"))
+        ModificarVenta()
+        except ValueError: 
+        print("Ingrese un caracter valido")
     
     if encontrado == True:
         opcion = int(input("¿Qué desea cambiar de este registro?\n 1. Numero\n 2. Compania telefónica\n 3. Modelo de Teléfono\n 4. Nombre propietario\n 5. Dirección\n 6.Tipo pago\n  Ingrese su opcion: "));
@@ -87,7 +94,7 @@ def EliminarDatos():
     Actualizar();
 
 def MostrarVentas():
-    print("------Lista de ventas ingresadas------")
+    print("-----Lista de ventas ingresadas-----")
     # Recorrer la tabla
     for registro in tablaVentas:
     # Imprimir los elementos a partir del segundo índice
