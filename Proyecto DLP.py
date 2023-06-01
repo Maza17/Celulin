@@ -1,5 +1,8 @@
 import json
 
+
+#comentario test
+
 base_datos = "dbCelulin.txt"
 tablaVentas = [[0] , [0] , [0] , [0] , [0] , [0]];
 opcion = 0;
