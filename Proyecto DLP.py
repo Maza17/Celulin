@@ -26,7 +26,7 @@ def value_int_input (msj1, msj2):
         try:
             numero = int(input(error_mensaje))
             return int(numero)
-#aca no es necesario el return int, osea el return si, el int no, porque en la variable número ya la definiste como int
+#aca no es necesario el return int, osea el return si, el int no, porque en la variable número ya la definiste como int "Appuru"
    
         except ValueError:
             error_mensaje = msj2
