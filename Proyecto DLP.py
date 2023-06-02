@@ -1,9 +1,6 @@
 import json
-
-
-
 base_datos = "dbCelulin.txt"
-tablaVentas = [[0] , [0] , [0] , [0] , [0] , [0]];
+tablaVentas = [[] , [] , [] , [] , [] , []];
 opcion = 0;
 with open(base_datos, "r") as db:
     if db.readline().strip():
@@ -17,6 +14,7 @@ def buscar_Numero ():
             encontrado = True;
         else:
             encontrado = False;
+            
     return encontrado, i;
 
 def value_int_input (msj1, msj2):
@@ -51,7 +49,6 @@ def AgregarVenta():
     Actualizar();
 
 def ModificarVenta():
- 
     encontrado, i = buscar_Numero()
     if encontrado == True:
         opcion = value_int_input("¿Qué desea cambiar de este registro?\n 1. Numero\n 2. Compania telefónica\n 3. Modelo de Teléfono\n 4. Nombre propietario\n 5. Dirección\n 6. Tipo pago\n 7. Salir\n Ingrese su opcion: ","Ingrese una opción válida: ")

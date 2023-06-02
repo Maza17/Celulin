@@ -1,1 +1,1 @@
-[[0, 71282430, 75155829], [0, "Claro", "Claro"], [0, "Samsumg", "Fijo"], [0, "Emersson", "Daniela"], [0, "Izalco", "Izalco"], [0, "Pospago", "Pospago"]]
+[[0], [0], [0], [0], [0], [0]]
