@@ -27,6 +27,15 @@ def no_string_input (msj1, msj2):
             return entrada
         error_mensaje = msj2
 
+def input_limitado(msj1, msj2, limite):
+    error_mensaje = msj1
+    while True:
+        entrada = str(value_int_input(msj1, msj2))
+        if len(entrada) <= limite:
+            return int(entrada)
+        error_mensaje = f"Error: La entrada debe tener máximo {limite} caracteres."
+        print(error_mensaje);
+
 # Deberían definir primero la función value int input para que no les vaya a dar error por llamar a una funcion que todavía no han definido "Appuru"
 def buscar_Numero():
     numero = value_int_input("Ingrese un número registrado: " , "Ingrese un caracter válido\nIngrese un número registrado: ")
@@ -41,7 +50,7 @@ def buscar_Numero():
 def AgregarVenta():
     print("------------Ingresar un nuevo registro-------------")
 # acá podrían usar la función buscar número que es lo mismo prácticamente que el bloque que sigue a este comentario, y así ahorrarse un par de lineas "appuru"
-    numtelefono = value_int_input("Ingrese un número de teléfono: " , "Ingrese un caracter válido\nIngrese un número de teléfono: ")
+    numtelefono = input_limitado("Ingrese un número de teléfono: " , "Ingrese un caracter válido\nIngrese un número de teléfono: ", 8);
     for i in range(len(tablaVentas[0])):
         if tablaVentas[0][i] == numtelefono:
             encontrado = True;
