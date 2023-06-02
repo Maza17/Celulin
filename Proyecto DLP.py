@@ -22,7 +22,7 @@ def no_string_input (msj1, msj2):
     error_mensaje = msj1
     while True:
         entrada = input(error_mensaje)
-        if not entrada.isdigit():
+        if not entrada.isdigit() and entrada == None:   
             return entrada
         error_mensaje = msj2
 
