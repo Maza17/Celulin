@@ -1,1 +1,1 @@
-[[0, 79629226, 70434565], [0, "Tigo", "Claro"], [0, "Samsung A30s", "Huawei"], [0, "Daniel Juarez", "Guadalupe Mazariego"], [0, "Quezaltepeque, La Libertad", "Quezaltepeque, La Libertad"], [0, "Pospago", "Prepago"]]
+[[0, 12312312], [0, "claro"], [0, "qefw3r3"], [0, "pedro"], [0, "3ef4f44f"], [0, "foasdas"]]

@@ -13,8 +13,8 @@ def value_int_input (msj1, msj2):
     error_mensaje = msj1
     while True:
         try:
-            numero = int(input(error_mensaje))
-            return numero;
+            numero = no_spaces(input(error_mensaje))
+            return int(numero);
     
         except ValueError:
             error_mensaje = msj2
@@ -22,10 +22,21 @@ def value_int_input (msj1, msj2):
 def no_string_input (msj1, msj2):
     error_mensaje = msj1
     while True:
-        entrada = input(error_mensaje)
-        if not entrada.isdigit() or entrada == None:   
+        entrada = no_spaces(input(error_mensaje))        
+        if entrada.isdigit():  
+            error_mensaje = msj2
+            continue
+        else:
             return entrada
-        error_mensaje = msj2
+
+def no_spaces (nombre_entrada):
+        while True:
+            check = str(nombre_entrada).replace(" ", "")
+            if len(check) == 0:
+                nombre_entrada = input("No se permiten los espacios vacios: ")
+                continue
+            else:
+                return nombre_entrada
 
 def input_limitado(msj1, msj2, limite):
     error_mensaje = msj1
@@ -51,7 +62,7 @@ def buscar_Numero():
 def AgregarVenta():
     print("------------Ingresar un nuevo registro-------------")
 # acá podrían usar la función buscar número que es lo mismo prácticamente que el bloque que sigue a este comentario, y así ahorrarse un par de lineas "appuru"
-    numtelefono = input_limitado("Ingrese un número de teléfono: " , "Ingrese un caracter válido\nIngrese un número de teléfono: ", 8);
+    numtelefono = no_spaces(input_limitado("Ingrese un número de teléfono: " , "Ingrese un caracter válido\nIngrese un número de teléfono: ", 8))
     for i in range(len(tablaVentas[0])):
         if tablaVentas[0][i] == numtelefono:
             encontrado = True;
@@ -63,9 +74,9 @@ def AgregarVenta():
     else:
         tablaVentas[0].append(numtelefono);
         tablaVentas[1].append(no_string_input("Ingrese el nombre de la compañia telefónica: ", "Error: No se permiten números. Por favor intente de nuevo: "));
-        tablaVentas[2].append(input("Ingrese el modelo del teléfono: "));
+        tablaVentas[2].append(no_spaces(input("Ingrese el modelo del teléfono: ")));
         tablaVentas[3].append(no_string_input("Ingrese el nombre del propietario: ", "Error: No se permiten números. Por favor intente de nuevo: "));
-        tablaVentas[4].append(input("Ingrese la dirección del propietario: "));
+        tablaVentas[4].append(no_spaces(input("Ingrese la dirección del propietario: ")));
         tablaVentas[5].append(no_string_input("Ingrese el tipo de pago a realizar: ", "Error: No se permiten números. Por favor intente de nuevo: "));
         print("Se añadido exitosamente")
     Actualizar();
