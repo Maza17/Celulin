@@ -48,7 +48,7 @@ def input_limitado(msj1, msj2, limite):
         print(error_mensaje);
 
 #Comentario
-#Buenas noches
+# Deberían definir primero la función value int input para que no les vaya a dar error por llamar a una funcion que todavía no han definido "Appuru"
 def buscar_Numero():
     numero = value_int_input("Ingrese un número registrado: " , "Ingrese un caracter válido\nIngrese un número registrado: ")
     for i in range(len(tablaVentas[0])):
