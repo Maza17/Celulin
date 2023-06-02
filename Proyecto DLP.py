@@ -1,7 +1,9 @@
 import json
+
 base_datos = "dbCelulin.txt"
 tablaVentas = [[0] , [0] , [0] , [0] , [0] , [0]];
 opcion = 0;
+
 with open(base_datos, "r") as db:
     if db.readline().strip():
         with open(base_datos,"r") as db:
@@ -12,9 +14,8 @@ def value_int_input (msj1, msj2):
     while True:
         try:
             numero = int(input(error_mensaje))
-            return numero
-#aca no es necesario el return int, osea el return si, el int no, porque en la variable número ya la definiste como int "Appuru"
-   
+            return numero;
+    
         except ValueError:
             error_mensaje = msj2
 
@@ -22,12 +23,12 @@ def no_string_input (msj1, msj2):
     error_mensaje = msj1
     while True:
         entrada = input(error_mensaje)
-        if not entrada.isdigit() and entrada == None:   
+        if not entrada.isdigit() or entrada == None:   
             return entrada
         error_mensaje = msj2
 
 # Deberían definir primero la función value int input para que no les vaya a dar error por llamar a una funcion que todavía no han definido "Appuru"
-def buscar_Numero ():
+def buscar_Numero():
     numero = value_int_input("Ingrese un número registrado: " , "Ingrese un caracter válido\nIngrese un número registrado: ")
     for i in range(len(tablaVentas[0])):
         if tablaVentas[0][i] == numero:
@@ -70,7 +71,7 @@ def ModificarVenta():
             print ("Se ha modificado exitosamente")
         elif opcion == 2:
             columna = i;
-            telefonianueva = input("Ingrese la nueva telefoía: ")
+            telefonianueva =  no_string_input("Ingrese la nueva compañia telefonica: ", "Error: No se permiten números. Por favor intente de nuevo: ")
             tablaVentas[1][columna] = telefonianueva;
             print ("Se ha modificado exitosamente")
         elif opcion == 3:
@@ -80,7 +81,7 @@ def ModificarVenta():
             print ("Se ha modificado exitosamente")
         elif opcion == 4:
             columna = i;
-            nombrenuevo = input("Ingrese el nombre nuevo: ");
+            nombrenuevo = no_string_input("Ingrese el nombre nuevo: ", "Error: No se permiten números. Por favor intente de nuevo: ");
             tablaVentas[3][columna] = nombrenuevo;
             print ("Se ha modificado exitosamente")
         elif opcion == 5:
@@ -90,7 +91,7 @@ def ModificarVenta():
             print ("Se ha modificado exitosamente")
         elif opcion == 6:
             columna = i;
-            pagonuevo = input("Ingrese el nuevo metodo de pago: ");
+            pagonuevo = no_string_input("Ingrese el nuevo metodo de pago: ", "Error: No se permiten números. Por favor intente de nuevo: ");
             tablaVentas[5][columna] = pagonuevo;
             print ("Se ha modificado exitosamente")
         elif opcion == 7:
