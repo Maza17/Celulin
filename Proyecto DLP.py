@@ -51,11 +51,11 @@ def AgregarVenta():
         print("Ya existe un registro con ese número, ingrese uno diferente. \n");
     else:
         tablaVentas[0].append(numtelefono);
-        tablaVentas[1].append(no_string_input("Ingrese el nombre de la compañia telefónica: ", "Error: No se permiten números. Por favor intente de nuevo"));
+        tablaVentas[1].append(no_string_input("Ingrese el nombre de la compañia telefónica: ", "Error: No se permiten números. Por favor intente de nuevo: "));
         tablaVentas[2].append(input("Ingrese el modelo del teléfono: "));
-        tablaVentas[3].append(no_string_input("Ingrese el nombre del propietario: ", "Error: No se permiten números. Por favor intente de nuevo"));
+        tablaVentas[3].append(no_string_input("Ingrese el nombre del propietario: ", "Error: No se permiten números. Por favor intente de nuevo: "));
         tablaVentas[4].append(input("Ingrese la dirección del propietario: "));
-        tablaVentas[5].append(no_string_input("Ingrese el tipo de pago a realizar: ", "Error: No se permiten números. Por favor intente de nuevo"));
+        tablaVentas[5].append(no_string_input("Ingrese el tipo de pago a realizar: ", "Error: No se permiten números. Por favor intente de nuevo: "));
         print("Se añadido exitosamente")
     Actualizar();
 
