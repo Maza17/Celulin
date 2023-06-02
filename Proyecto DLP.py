@@ -1,13 +1,32 @@
 import json
 base_datos = "dbCelulin.txt"
-tablaVentas = [[] , [] , [] , [] , [] , []];
+tablaVentas = [[0] , [0] , [0] , [0] , [0] , [0]];
 opcion = 0;
 with open(base_datos, "r") as db:
     if db.readline().strip():
         with open(base_datos,"r") as db:
             tablaVentas = json.load(db);
-# Deberían definir primero la función value int input para que no les vaya a dar error por llamar a una funcion que todavía no han definido "Appuru"
 
+def value_int_input (msj1, msj2):
+    error_mensaje = msj1
+    while True:
+        try:
+            numero = int(input(error_mensaje))
+            return numero
+#aca no es necesario el return int, osea el return si, el int no, porque en la variable número ya la definiste como int "Appuru"
+   
+        except ValueError:
+            error_mensaje = msj2
+
+def no_string_input (msj1, msj2):
+    error_mensaje = msj1
+    while True:
+        entrada = input(error_mensaje)
+        if not entrada.isdigit():
+            return entrada
+        error_mensaje = msj2
+
+# Deberían definir primero la función value int input para que no les vaya a dar error por llamar a una funcion que todavía no han definido "Appuru"
 def buscar_Numero ():
     numero = value_int_input("Ingrese un número registrado: " , "Ingrese un caracter válido\nIngrese un número registrado: ")
     for i in range(len(tablaVentas[0])):
@@ -17,18 +36,6 @@ def buscar_Numero ():
             encontrado = False;
             
     return encontrado, i;
-
-def value_int_input (msj1, msj2):
-    error_mensaje = msj1
-    while True:
-        try:
-            numero = int(input(error_mensaje))
-            return int(numero)
-#aca no es necesario el return int, osea el return si, el int no, porque en la variable número ya la definiste como int "Appuru"
-   
-        except ValueError:
-            error_mensaje = msj2
-
 
 def AgregarVenta():
     print("------------Ingresar un nuevo registro-------------")
@@ -44,11 +51,11 @@ def AgregarVenta():
         print("Ya existe un registro con ese número, ingrese uno diferente. \n");
     else:
         tablaVentas[0].append(numtelefono);
-        tablaVentas[1].append(input("Ingrese el nombre de la compañia telefónica: "));
+        tablaVentas[1].append(no_string_input("Ingrese el nombre de la compañia telefónica: ", "Error: No se permiten números. Por favor intente de nuevo"));
         tablaVentas[2].append(input("Ingrese el modelo del teléfono: "));
-        tablaVentas[3].append(input("Ingrese el nombre del propietario: "));
+        tablaVentas[3].append(no_string_input("Ingrese el nombre del propietario: ", "Error: No se permiten números. Por favor intente de nuevo"));
         tablaVentas[4].append(input("Ingrese la dirección del propietario: "));
-        tablaVentas[5].append(input("Ingrese el tipo de pago a realizar: "));
+        tablaVentas[5].append(no_string_input("Ingrese el tipo de pago a realizar: ", "Error: No se permiten números. Por favor intente de nuevo"));
         print("Se añadido exitosamente")
     Actualizar();
 
