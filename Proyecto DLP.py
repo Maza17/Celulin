@@ -34,6 +34,7 @@ def value_int_input (msj1, msj2):
 
 def AgregarVenta():
     print("------------Ingresar un nuevo registro-------------")
+# acá podrían usar la función buscar número que es lo mismo prácticamente que el bloque que sigue a este comentario, y así ahorrarse un par de lineas "appuru"
     numtelefono = value_int_input("Ingrese un número de teléfono: " , "Ingrese un caracter válido\nIngrese un número de teléfono: ")
     for i in range(len(tablaVentas[0])):
         if tablaVentas[0][i] == numtelefono:
