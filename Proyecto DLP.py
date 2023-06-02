@@ -6,6 +6,7 @@ with open(base_datos, "r") as db:
     if db.readline().strip():
         with open(base_datos,"r") as db:
             tablaVentas = json.load(db);
+# Deberían definir primero la función value int input para que no les vaya a dar error por llamar a una funcion que todavía no han definido "Appuru"
 
 def buscar_Numero ():
     numero = value_int_input("Ingrese un número registrado: " , "Ingrese un caracter válido\nIngrese un número registrado: ")
@@ -23,12 +24,15 @@ def value_int_input (msj1, msj2):
         try:
             numero = int(input(error_mensaje))
             return int(numero)
+#aca no es necesario el return int, osea el return si, el int no, porque en la variable número ya la definiste como int "Appuru"
+   
         except ValueError:
             error_mensaje = msj2
 
 
 def AgregarVenta():
     print("------------Ingresar un nuevo registro-------------")
+# acá podrían usar la función buscar número que es lo mismo prácticamente que el bloque que sigue a este comentario, y así ahorrarse un par de lineas "appuru"
     numtelefono = value_int_input("Ingrese un número de teléfono: " , "Ingrese un caracter válido\nIngrese un número de teléfono: ")
     for i in range(len(tablaVentas[0])):
         if tablaVentas[0][i] == numtelefono:
