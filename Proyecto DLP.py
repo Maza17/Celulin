@@ -9,6 +9,7 @@ with open(base_datos, "r") as db:
         with open(base_datos,"r") as db:
             tablaVentas = json.load(db);
 
+#Hola Allison
 def value_int_input (msj1, msj2):
     error_mensaje = msj1
     while True:
