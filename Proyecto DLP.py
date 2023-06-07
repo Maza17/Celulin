@@ -133,11 +133,17 @@ def ModificarVenta():
             print ("Se ha modificado exitosamente")
         elif opcion == 6:
             columna = i;
-            pagonuevo = no_string_input("Ingrese el nuevo metodo de pago: ", "Error: No se permiten números. Por favor intente de nuevo: ");
+            pagonuevo = value_int_input("\nMenú de tipos de pago:\n1. Prepago\n2. Pospago\nSeleccione un tipo de pago: ", "Por favor ingrese una opción válida, intente de nuevo: ");
             tablaVentas[5][columna] = pagonuevo;
+            columna = i;
+            if pagonuevo == 1:
+                mensualidadnueva = 0.00
+            elif pagonuevo == 2:
+                mensualidadnueva = 25.00
+            tablaVentas[6][columna] = mensualidadnueva;
             print ("Se ha modificado exitosamente")
         elif opcion == 7:
-            opcion ==7
+            opcion == 7
         else: 
             print("Seleccione una de las opciones antes mostradas.\n");
             value_int_input("¿Qué desea cambiar de este registro?\n 1. Numero\n 2. Compania telefónica\n 3. Modelo de Teléfono\n 4. Nombre propietario\n 5. Dirección\n 6.Tipo pago\n 7. salir\n  Ingrese su opcion: ","Ingrese una opción válida: ")
@@ -162,6 +168,7 @@ def EliminarDatos():
         tablaVentas[3].pop(i);
         tablaVentas[4].pop(i);
         tablaVentas[5].pop(i);
+        tablaVentas[6].pop(i);
     
         print("Se ha elimiado exitosamente")
     else:
