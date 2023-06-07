@@ -1,7 +1,7 @@
 import json
 
 base_datos = "dbCelulin.txt"
-tablaVentas = [[0] , [0] , [0] , [0] , [0] , [0]];
+tablaVentas = [[0] , [0] , [0] , [0] , [0] , [0], [0]];
 opcion = 0;
 
 with open(base_datos, "r") as db:
@@ -9,7 +9,6 @@ with open(base_datos, "r") as db:
         with open(base_datos,"r") as db:
             tablaVentas = json.load(db);
 
-#Hola Allison
 def value_int_input (msj1, msj2):
     error_mensaje = msj1
     while True:
@@ -49,39 +48,62 @@ def input_limitado(msj1, msj2, limite):
         print(error_mensaje);
 
 def buscar_Numero():
-    numero = value_int_input("Ingrese un número registrado: " , "Ingrese un caracter válido\nIngrese un número registrado: ")
+    numero = no_spaces(input_limitado("Ingrese un número de teléfono: " , "Ingrese un caracter válido\nIngrese un número registrado: ", 8));
     for i in range(len(tablaVentas[0])):
-        if tablaVentas[0][i] == numero:
+        if numero == tablaVentas[0][i]:
             encontrado = True;
+            break;
         else:
-            encontrado = False;
-            
-    return encontrado, i;
+            encontrado = False;      
+    return numero, encontrado, i;
+
+def Companias():
+    opcionCompanias = 0;
+    while opcionCompanias != 5:
+        opcionCompanias = value_int_input("\nMenú de compañias telefónicas:\n1. Claro \n2. Tigo \n3. Movistar \n4. Digicel\n5. Salir\nSeleccione una compañia telefónica: ", "Por favor ingrese una opción válida, intente de nuevo: ");
+        if opcionCompanias == 1:
+            return opcionCompanias;
+        elif opcionCompanias == 2:
+            return opcionCompanias;
+        elif opcionCompanias == 3:
+            return opcionCompanias;
+        elif opcionCompanias == 4:
+            return opcionCompanias;
+        elif opcionCompanias == 5:
+            opcionCompanias = 5;
+
+def TipoPago():
+    opcionPago = 0;
+    while opcionPago != 3:
+        opcionPago = value_int_input("\nMenú de tipos de pago:\n1. Prepago\n2. Pospago\nSeleccione un tipo de pago: ", "Por favor ingrese una opción válida, intente de nuevo: ");
+        if opcionPago == 1:
+            valor = 0.00;
+            return opcionPago, valor;
+        elif opcionPago == 2:
+            valor = 25.00;
+            return opcionPago, valor;
+        elif opcionPago == 3:
+            opcionPago = 3;
 
 def AgregarVenta():
     print("------------Ingresar un nuevo registro-------------")
-# acá podrían usar la función buscar número que es lo mismo prácticamente que el bloque que sigue a este comentario, y así ahorrarse un par de lineas "appuru"
-    numtelefono = no_spaces(input_limitado("Ingrese un número de teléfono: " , "Ingrese un caracter válido\nIngrese un número de teléfono: ", 8))
-    for i in range(len(tablaVentas[0])):
-        if tablaVentas[0][i] == numtelefono:
-            encontrado = True;
-        else:
-            encontrado = False;
-    
+    numtelefono, encontrado, i = buscar_Numero();
     if encontrado == True:
         print("Ya existe un registro con ese número, ingrese uno diferente. \n");
     else:
         tablaVentas[0].append(numtelefono);
-        tablaVentas[1].append(no_string_input("Ingrese el nombre de la compañia telefónica: ", "Error: No se permiten números. Por favor intente de nuevo: "));
+        tablaVentas[1].append(Companias());
         tablaVentas[2].append(no_spaces(input("Ingrese el modelo del teléfono: ")));
         tablaVentas[3].append(no_string_input("Ingrese el nombre del propietario: ", "Error: No se permiten números. Por favor intente de nuevo: "));
         tablaVentas[4].append(no_spaces(input("Ingrese la dirección del propietario: ")));
-        tablaVentas[5].append(no_string_input("Ingrese el tipo de pago a realizar: ", "Error: No se permiten números. Por favor intente de nuevo: "));
+        opcionCompania, valorPago = TipoPago();
+        tablaVentas[5].append(opcionCompania);
+        tablaVentas[6].append(valorPago);
         print("Se añadido exitosamente")
     Actualizar();
 
 def ModificarVenta():
-    encontrado, i = buscar_Numero()
+    numero, encontrado, i = buscar_Numero()
     if encontrado == True:
         opcion = value_int_input("¿Qué desea cambiar de este registro?\n 1. Numero\n 2. Compania telefónica\n 3. Modelo de Teléfono\n 4. Nombre propietario\n 5. Dirección\n 6. Tipo pago\n 7. Salir\n Ingrese su opcion: ","Ingrese una opción válida: ")
         if opcion == 1:
@@ -179,4 +201,4 @@ while opcion != 5:
     elif opcion == 5:
         opcion == 5;
     else:
-        print("Ingrese una opción válida")
+        print("Ingrese una opción válida");
