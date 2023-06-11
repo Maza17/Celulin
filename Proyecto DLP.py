@@ -227,26 +227,8 @@ def EliminarDatos():
     Actualizar();
 
 def MostrarVentas():
-    print("Opciones disponibles: ")
-    print("1. Mostrar vista general de ventas");
-    print("2. Mostrar ventas en orden alfabético");
-    print("3. Salir")
-
-    opcion = value_int_input("Ingrese una opción : " , "Ingrese un carácter válido:  ")
-    if opcion == 1:
-        for registro in tablaVentas:
-            print(registro[1:])
-        borrarPantalla()
-    elif opcion == 2:
-        opcion == 2
-    elif opcion == 3:
-        opcion ==3
-    else:
-        print("Ingrese una opción válida")
-
-#for registro in tablaVentas:
-    # Imprimir los elementos a partir del segundo índice
-        #print(registro[1:])
+    for registro in tablaVentas:
+        print(registro[1:])
 
 
 
