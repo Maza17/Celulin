@@ -239,7 +239,6 @@ def Actualizar():
 
 while opcion != 5:
     bienvenida()
-    print(f"\n------------BIENVENIDO AL SISTEMA DE CELULIN SV------------")
     print("Acciones disponibles: ")
     print("1. Ingresar nueva venta");
     print("2. Modificar una venta");

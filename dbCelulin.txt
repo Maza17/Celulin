@@ -1,0 +1,1 @@
+[[0, 79629226, 78418600], [0, 1, 2], [0, "Samsung A30s", "Huawei"], [0, "Daniel Juarez", "Carlos Juarez"], [0, "Quezaltepeque, La Libertad", "Santa Ana"], [0, 1, 2], [0, 0.0, 25.0]]
