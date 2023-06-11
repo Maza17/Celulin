@@ -41,7 +41,7 @@ def bienvenida():
  
     print("****************************************")
     print("*                                      *")
-    print("*      De las ventas realizadas        *")
+    print("*      De las ventas realizadas.       *")
     print("*                                      *")
     print("****************************************")
  
