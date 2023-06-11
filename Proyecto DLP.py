@@ -11,15 +11,13 @@ with open(base_datos, "r") as db:
         with open(base_datos,"r") as db:
             tablaVentas = json.load(db);
 
- 
-def bienvenida():
     if os.name == "posix":
         var = "clear"       
     elif os.name == "ce" or os.name == "nt" or os.name == "dos":
         var = "cls"
  
     time.sleep(1)
- 
+
     os.system(var) 
     print("****************************************") 
     print("*                                      *")
@@ -47,13 +45,13 @@ def bienvenida():
  
     time.sleep(1)
 
-def borrarpantalla():
-    if os.name == "posix":
-        borrarPantalla = lambda: os.system ("clear")
-    elif os.name == "ce" or os.name == "nt" or os.name == "dos":
-        borrarPantalla = lambda: os.system ("cls") 
-
-
+def borrarPantalla(): #Definimos la función estableciendo el nombre que queramos
+    opcionPantalla = value_int_input("\n¿Desea limpiar su terminal?\n1. Si\n2. No\nIngrese su opción:", "Ingrese una opción válida: ")
+    if opcionPantalla == 1 and (lambda: os.name == "ce" or os.name == "nt" or os.name == "dos"):
+        os.system ("cls")
+    elif opcionPantalla == 2:
+         opcionPantalla == 2
+    
 def value_int_input (msj1, msj2):
     error_mensaje = msj1
     while True:
@@ -145,7 +143,7 @@ def AgregarVenta():
         tablaVentas[5].append(opcionCompania);
         tablaVentas[6].append(valorPago);
         print("Se añadido exitosamente")
-        borrarpantalla()
+    borrarPantalla()
     Actualizar();
 
 def ModificarVenta():
@@ -197,7 +195,8 @@ def ModificarVenta():
     else:
         print("Numero no encontrado")
         ModificarVenta()
-        borrarpantalla()
+    
+    borrarPantalla()
     Actualizar();
 
 def EliminarDatos():
@@ -223,23 +222,40 @@ def EliminarDatos():
     else:
         print("Numero no encontrado")
         EliminarDatos()
-        borrarpantalla()
+
+    borrarPantalla()
     Actualizar();
 
 def MostrarVentas():
-    print("-----Lista de ventas ingresadas-----")
-    # Recorrer la tabla
-    for registro in tablaVentas:
+    print("Opciones disponibles: ")
+    print("1. Mostrar vista general de ventas");
+    print("2. Mostrar ventas en orden alfabético");
+    print("3. Salir")
+
+    opcion = value_int_input("Ingrese una opción : " , "Ingrese un carácter válido:  ")
+    if opcion == 1:
+        for registro in tablaVentas:
+            print(registro[1:])
+        borrarPantalla()
+    elif opcion == 2:
+        opcion == 2
+    elif opcion == 3:
+        opcion ==3
+    else:
+        print("Ingrese una opción válida")
+
+#for registro in tablaVentas:
     # Imprimir los elementos a partir del segundo índice
-        print(registro[1:])
+        #print(registro[1:])
+
+
 
 def Actualizar():
     with open(base_datos, "w") as db:
         json.dump(tablaVentas, db)
 
 while opcion != 5:
-    bienvenida()
-    print(f"\n------------BIENVENIDO AL SISTEMA DE CELULIN SV------------")
+    print("\n------------BIENVENIDO AL SISTEMA DE CELULIN SV------------")
     print("Acciones disponibles: ")
     print("1. Ingresar nueva venta");
     print("2. Modificar una venta");
