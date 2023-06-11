@@ -1,13 +1,58 @@
 import json
-
+import os
+import time 
 base_datos = "dbCelulin.txt"
 tablaVentas = [[0] , [0] , [0] , [0] , [0] , [0], [0]];
 opcion = 0;
+
 
 with open(base_datos, "r") as db:
     if db.readline().strip():
         with open(base_datos,"r") as db:
             tablaVentas = json.load(db);
+
+ 
+def bienvenida():
+    if os.name == "posix":
+        var = "clear"       
+    elif os.name == "ce" or os.name == "nt" or os.name == "dos":
+        var = "cls"
+ 
+    time.sleep(1)
+ 
+    os.system(var) 
+    print("****************************************") 
+    print("*                                      *")
+    print("*    ¡Bienvenidos a Sistema Celulin!   *")
+    print("*                                      *")
+    print("****************************************")
+ 
+    time.sleep(1)
+    os.system(var)
+ 
+    print("****************************************")
+    print("*                                      *")
+    print("*      Aquí se almacenarán datos       *")
+    print("*                                      *")
+    print("****************************************")
+ 
+    time.sleep(1)
+    os.system(var)
+ 
+    print("****************************************")
+    print("*                                      *")
+    print("*      De las ventas realizadas        *")
+    print("*                                      *")
+    print("****************************************")
+ 
+    time.sleep(1)
+
+def borrarpantalla():
+    if os.name == "posix":
+        borrarPantalla = lambda: os.system ("clear")
+    elif os.name == "ce" or os.name == "nt" or os.name == "dos":
+        borrarPantalla = lambda: os.system ("cls") 
+
 
 def value_int_input (msj1, msj2):
     error_mensaje = msj1
@@ -33,7 +78,7 @@ def no_spaces (nombre_entrada):
         while True:
             check = str(nombre_entrada).replace(" ", "")
             if len(check) == 0:
-                nombre_entrada = input("No se permiten los espacios vacios: ")
+                nombre_entrada = input("No se permiten los espacios vacíos: ")
                 continue
             else:
                 return nombre_entrada
@@ -48,7 +93,7 @@ def input_limitado(msj1, msj2, limite):
         print(error_mensaje);
 
 def buscar_Numero():
-    numero = no_spaces(input_limitado("Ingrese un número de teléfono: " , "Ingrese un caracter válido\nIngrese un número registrado: ", 8));
+    numero = no_spaces(input_limitado("\nIngrese un número de teléfono: " , "Ingrese un caracter válido\nIngrese un número registrado: ", 8));
     for i in range(len(tablaVentas[0])):
         if numero == tablaVentas[0][i]:
             encontrado = True;
@@ -60,7 +105,7 @@ def buscar_Numero():
 def Companias():
     opcionCompanias = 0;
     while opcionCompanias != 5:
-        opcionCompanias = value_int_input("\nMenú de compañias telefónicas:\n1. Claro \n2. Tigo \n3. Movistar \n4. Digicel\n5. Salir\nSeleccione una compañia telefónica: ", "Por favor ingrese una opción válida, intente de nuevo: ");
+        opcionCompanias = value_int_input("\nMenú de compañías telefónicas:\n1. Claro \n2. Tigo \n3. Movistar \n4. Digicel\n5. Salir\nSeleccione una compañia telefónica: ", "Por favor ingrese una opción válida, intente de nuevo: ");
         if opcionCompanias == 1:
             return opcionCompanias;
         elif opcionCompanias == 2:
@@ -93,27 +138,29 @@ def AgregarVenta():
     else:
         tablaVentas[0].append(numtelefono);
         tablaVentas[1].append(Companias());
-        tablaVentas[2].append(no_spaces(input("Ingrese el modelo del teléfono: ")));
-        tablaVentas[3].append(no_string_input("Ingrese el nombre del propietario: ", "Error: No se permiten números. Por favor intente de nuevo: "));
-        tablaVentas[4].append(no_spaces(input("Ingrese la dirección del propietario: ")));
+        tablaVentas[2].append(no_spaces(input("\nIngrese el modelo del teléfono: ")));
+        tablaVentas[3].append(no_string_input("\nIngrese el nombre del propietario: ", "Error: No se permiten números. Por favor intente de nuevo: "));
+        tablaVentas[4].append(no_spaces(input("\nIngrese la dirección del propietario: ")));
         opcionCompania, valorPago = TipoPago();
         tablaVentas[5].append(opcionCompania);
         tablaVentas[6].append(valorPago);
         print("Se añadido exitosamente")
+        borrarpantalla()
     Actualizar();
 
 def ModificarVenta():
+    MostrarVentas()
     numero, encontrado, i = buscar_Numero()
     if encontrado == True:
-        opcion = value_int_input("¿Qué desea cambiar de este registro?\n 1. Numero\n 2. Compania telefónica\n 3. Modelo de Teléfono\n 4. Nombre propietario\n 5. Dirección\n 6. Tipo pago\n 7. Salir\n Ingrese su opcion: ","Ingrese una opción válida: ")
+        opcion = value_int_input("\n¿Qué desea cambiar de este registro?\n 1. Número\n 2. Compañía telefónica\n 3. Modelo de Teléfono\n 4. Nombre propietario\n 5. Dirección\n 6. Tipo pago\n 7. Salir\n Ingrese su opcion: ","Ingrese una opción válida: ")
         if opcion == 1:
             columna = i;
-            numeronuevo = value_int_input ("Ingrese el nuevo número: ", "Ingrese un caracter válido: ")
+            numeronuevo = value_int_input ("\nIngrese el nuevo número: ", "Ingrese un caracter válido: ")
             tablaVentas[0][columna] = numeronuevo;
             print ("Se ha modificado exitosamente")
         elif opcion == 2:
             columna = i;
-            telefonianueva =  no_string_input("Ingrese la nueva compañia telefonica: ", "Error: No se permiten números. Por favor intente de nuevo: ")
+            telefonianueva = Companias()
             tablaVentas[1][columna] = telefonianueva;
             print ("Se ha modificado exitosamente")
         elif opcion == 3:
@@ -146,14 +193,16 @@ def ModificarVenta():
             opcion == 7
         else: 
             print("Seleccione una de las opciones antes mostradas.\n");
-            value_int_input("¿Qué desea cambiar de este registro?\n 1. Numero\n 2. Compania telefónica\n 3. Modelo de Teléfono\n 4. Nombre propietario\n 5. Dirección\n 6.Tipo pago\n 7. salir\n  Ingrese su opcion: ","Ingrese una opción válida: ")
+            value_int_input("¿Qué desea cambiar de este registro?\n 1. Número\n 2. Compañía telefónica\n 3. Modelo de Teléfono\n 4. Nombre propietario\n 5. Dirección\n 6.Tipo pago\n 7. salir\n  Ingrese su opcion: ","Ingrese una opción válida: ")
     else:
         print("Numero no encontrado")
         ModificarVenta()
+        borrarpantalla()
     Actualizar();
 
 def EliminarDatos():
-    numero = value_int_input("Ingrese un número de teléfono: " , "Ingrese un caracter válido\nIngrese un número de teléfono: ")
+    MostrarVentas()
+    numero = value_int_input("\nIngrese el número de venta a eliminar: " , "Ingrese un caracter válido\nIngrese un número de teléfono: ")
     for i in range(len(tablaVentas[0])):
         if tablaVentas[0][i] == numero:
             encontrado = True;
@@ -174,6 +223,7 @@ def EliminarDatos():
     else:
         print("Numero no encontrado")
         EliminarDatos()
+        borrarpantalla()
     Actualizar();
 
 def MostrarVentas():
@@ -188,7 +238,8 @@ def Actualizar():
         json.dump(tablaVentas, db)
 
 while opcion != 5:
-    print(f"------------BIENVENIDO AL SISTEMA DE CELULIN SV------------")
+    bienvenida()
+    print(f"\n------------BIENVENIDO AL SISTEMA DE CELULIN SV------------")
     print("Acciones disponibles: ")
     print("1. Ingresar nueva venta");
     print("2. Modificar una venta");
