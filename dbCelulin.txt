@@ -1,1 +1,1 @@
-[[0, 78418600], [0, 2], [0, "Huawei"], [0, "Carlos Juarez"], [0, "Santa Ana"], [0, 2], [0, 25.0]]
+[[0, 24536012, 71282430], [0, 1, 2], [0, "Samsumg", "Fijo"], [0, "Selvin", "Alli"], [0, "Sonsonate", "San salvador"], [0, 1, 2], [0, 0.0, 25.0]]

@@ -11,6 +11,41 @@ with open(base_datos, "r") as db:
         with open(base_datos,"r") as db:
             tablaVentas = json.load(db);
 
+if os.name == "posix":
+    var = "clear"       
+elif os.name == "ce" or os.name == "nt" or os.name == "dos":
+    var = "cls"
+ 
+time.sleep(1)
+
+os.system(var) 
+print("****************************************") 
+print("*                                      *")
+print("*    ¡Bienvenidos a Sistema Celulin!   *")
+print("*                                      *")
+print("****************************************")
+ 
+time.sleep(1)
+os.system(var)
+ 
+print("****************************************")
+print("*                                      *")
+print("*      Aquí se almacenarán datos       *")
+print("*                                      *")
+print("****************************************")
+ 
+time.sleep(1)
+os.system(var)
+ 
+print("****************************************")
+print("*                                      *")
+print("*      De las ventas realizadas.       *")
+print("*                                      *")
+print("****************************************")
+ 
+time.sleep(1)
+
+def despedida():
     if os.name == "posix":
         var = "clear"       
     elif os.name == "ce" or os.name == "nt" or os.name == "dos":
@@ -21,7 +56,7 @@ with open(base_datos, "r") as db:
     os.system(var) 
     print("****************************************") 
     print("*                                      *")
-    print("*    ¡Bienvenidos a Sistema Celulin!   *")
+    print("*    !Gracias por preferirnos¡         *")
     print("*                                      *")
     print("****************************************")
  
@@ -30,23 +65,15 @@ with open(base_datos, "r") as db:
  
     print("****************************************")
     print("*                                      *")
-    print("*      Aquí se almacenarán datos       *")
+    print("*      Que tenga un lindo día :')      *")
     print("*                                      *")
     print("****************************************")
  
     time.sleep(1)
-    os.system(var)
- 
-    print("****************************************")
-    print("*                                      *")
-    print("*      De las ventas realizadas.       *")
-    print("*                                      *")
-    print("****************************************")
- 
-    time.sleep(1)
+   
 
 def borrarPantalla(): #Definimos la función estableciendo el nombre que queramos
-    opcionPantalla = value_int_input("\n¿Desea limpiar su terminal?\n1. Si\n2. No\nIngrese su opción:", "Ingrese una opción válida: ")
+    opcionPantalla = value_int_input("\n¿Desea limpiar su terminal?\n1. Si\n2. No\nIngrese su opción: ", "Ingrese una opción válida: ")
     if opcionPantalla == 1 and (lambda: os.name == "ce" or os.name == "nt" or os.name == "dos"):
         os.system ("cls")
     elif opcionPantalla == 2:
@@ -129,7 +156,7 @@ def TipoPago():
             opcionPago = 3;
 
 def AgregarVenta():
-    print("------------Ingresar un nuevo registro-------------")
+    print("\n------------Ingresar un nuevo registro-------------")
     numtelefono, encontrado, i = buscar_Numero();
     if encontrado == True:
         print("Ya existe un registro con ese número, ingrese uno diferente. \n");
@@ -147,6 +174,7 @@ def AgregarVenta():
     Actualizar();
 
 def ModificarVenta():
+    print("\n------------Modificar un registro-------------")
     MostrarVentas()
     numero, encontrado, i = buscar_Numero()
     if encontrado == True:
@@ -195,7 +223,6 @@ def ModificarVenta():
     else:
         print("Numero no encontrado")
         ModificarVenta()
-    
     borrarPantalla()
     Actualizar();
 
@@ -236,8 +263,9 @@ def Actualizar():
     with open(base_datos, "w") as db:
         json.dump(tablaVentas, db)
 
+
 while opcion != 5:
-    print("\n------------BIENVENIDO AL SISTEMA DE CELULIN SV------------")
+    print("------------BIENVENIDO AL SISTEMA DE CELULIN SV------------")
     print("Acciones disponibles: ")
     print("1. Ingresar nueva venta");
     print("2. Modificar una venta");
@@ -255,6 +283,6 @@ while opcion != 5:
     elif opcion == 4:
         MostrarVentas();
     elif opcion == 5:
-        opcion == 5;
+        despedida()
     else:
         print("Ingrese una opción válida");
