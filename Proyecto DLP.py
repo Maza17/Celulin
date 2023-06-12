@@ -273,8 +273,6 @@ opcionCompanias = value_int_input("\nMenú de compañías telefónicas:\n1. Clar
 
 
 
-
-
     
 
 while opcion != 5:
