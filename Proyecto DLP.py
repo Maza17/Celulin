@@ -1,6 +1,7 @@
 import json
 import os
 import time 
+
 base_datos = "dbCelulin.txt"
 tablaVentas = [[0] , [0] , [0] , [0] , [0] , [0], [0]];
 opcion = 0;
@@ -11,39 +12,43 @@ with open(base_datos, "r") as db:
         with open(base_datos,"r") as db:
             tablaVentas = json.load(db);
 
+
 if os.name == "posix":
     var = "clear"       
 elif os.name == "ce" or os.name == "nt" or os.name == "dos":
     var = "cls"
- 
-time.sleep(1)
 
-os.system(var) 
-print("****************************************") 
-print("*                                      *")
-print("*    ¡Bienvenidos a Sistema Celulin!   *")
-print("*                                      *")
-print("****************************************")
  
-time.sleep(1)
-os.system(var)
+def bienvenida():
+    
+    time.sleep(1)
+
+    os.system(var) 
+    print("****************************************") 
+    print("*                                      *")
+    print("*    ¡Bienvenidos a Sistema Celulin!   *")
+    print("*                                      *")
+    print("****************************************")
  
-print("****************************************")
-print("*                                      *")
-print("*      Aquí se almacenarán datos       *")
-print("*                                      *")
-print("****************************************")
+    time.sleep(1)
+    os.system(var)
  
-time.sleep(1)
-os.system(var)
+    print("****************************************")
+    print("*                                      *")
+    print("*      Aquí se almacenarán datos       *")
+    print("*                                      *")
+    print("****************************************")
  
-print("****************************************")
-print("*                                      *")
-print("*      De las ventas realizadas.       *")
-print("*                                      *")
-print("****************************************")
+    time.sleep(1)
+    os.system(var)
  
-time.sleep(1)
+    print("****************************************")
+    print("*                                      *")
+    print("*      De las ventas realizadas.       *")
+    print("*                                      *")
+    print("****************************************")
+ 
+    time.sleep(1)
 
 def despedida():
     if os.name == "posix":
@@ -70,7 +75,7 @@ def despedida():
     print("****************************************")
  
     time.sleep(1)
-   
+
 
 def borrarPantalla(): #Definimos la función estableciendo el nombre que queramos
     opcionPantalla = value_int_input("\n¿Desea limpiar su terminal?\n1. Si\n2. No\nIngrese su opción: ", "Ingrese una opción válida: ")
@@ -256,15 +261,15 @@ def EliminarDatos():
 def MostrarVentas():
     for registro in tablaVentas:
         print(registro[1:])
-
-
+    
 
 def Actualizar():
     with open(base_datos, "w") as db:
         json.dump(tablaVentas, db)
 
-
+bienvenida()
 while opcion != 5:
+
     print("------------BIENVENIDO AL SISTEMA DE CELULIN SV------------")
     print("Acciones disponibles: ")
     print("1. Ingresar nueva venta");
