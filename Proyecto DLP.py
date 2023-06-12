@@ -264,9 +264,10 @@ def Actualizar():
         json.dump(tablaVentas, db)
 
 def FiltrarCompañia():
-    boolean =True
-    filtro = int(input("¿Qué compañia desea filtrar? \nMenú de compañías telefónicas: \n1. Claro \n2. Tigo \n3. Movistar \n4. Digicel\n5. Salir\nSeleccione la opción que desea en números: "))
-    """while boolean = True:"""
+    filtro=0
+    boolean = False
+    while boolean == False:
+        filtro=value_int_input(input("¿Qué compañia desea filtrar? \nMenú de compañías telefónicas: \n1. Claro \n2. Tigo \n3. Movistar \n4. Digicel\n5. Salir\nSeleccione la opción que desea en números: "))
     if filtro == 1:
         Companias.sort()
         print()
@@ -282,6 +283,13 @@ def FiltrarCompañia():
     if filtro ==4:
         Companias.sort()
         print()
+
+    if filtro ==5:
+        boolean == True
+
+    else: print("Ingrese otro numero dentro del rango solicitado")
+    boolean = False
+
     
 
 
