@@ -236,6 +236,9 @@ def Actualizar():
     with open(base_datos, "w") as db:
         json.dump(tablaVentas, db)
 
+def FiltrarCompañia()
+    
+
 while opcion != 5:
     print("\n------------BIENVENIDO AL SISTEMA DE CELULIN SV------------")
     print("Acciones disponibles: ")
