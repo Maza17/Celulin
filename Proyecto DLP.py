@@ -4,6 +4,8 @@ import time
 
 base_datos = "dbCelulin.txt"
 tablaVentas = [[0] , [0] , [0] , [0] , [0] , [0], [0]];
+tablaCompanias = [[0] , [0] , [0] , [0] , [0] , [0], [0]];
+tablaOrdenadas = [[0] , [0] , [0] , [0] , [0] , [0], [0]];
 opcion = 0;
 
 
@@ -61,7 +63,7 @@ def despedida():
     os.system(var) 
     print("****************************************") 
     print("*                                      *")
-    print("*    !Gracias por preferirnos¡         *")
+    print("*    ¡Gracias por preferirnos!         *")
     print("*                                      *")
     print("****************************************")
  
@@ -258,16 +260,17 @@ def EliminarDatos():
     borrarPantalla()
     Actualizar();
 
-def MostrarVentas():
-    for registro in tablaVentas:
+def MostrarVentas(tabla):
+    for registro in tabla:
         print(registro[1:])
-    
+
+
 
 def Actualizar():
     with open(base_datos, "w") as db:
         json.dump(tablaVentas, db)
 
-bienvenida()
+
 while opcion != 5:
 
     print("------------BIENVENIDO AL SISTEMA DE CELULIN SV------------")
@@ -276,7 +279,8 @@ while opcion != 5:
     print("2. Modificar una venta");
     print("3. Eliminar una venta");
     print("4. Mostrar ventas");
-    print("5. Salir");
+    print("5. Filtrar ventas")
+    print("6. Salir");
     opcion = value_int_input("Ingrese una opción : " , "Ingrese un carácter válido:  ")
 
     if opcion == 1:
@@ -288,8 +292,8 @@ while opcion != 5:
     elif opcion == 4:
         MostrarVentas();
     elif opcion == 5:
+        FiltrarCompañia();
+    elif opcion == 6:
         despedida()
     else:
         print("Ingrese una opción válida");
-
-
