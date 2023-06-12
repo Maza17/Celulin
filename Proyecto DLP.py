@@ -264,18 +264,39 @@ def Actualizar():
         json.dump(tablaVentas, db)
 
 def FiltrarCompañia():
-    filtro = ("¿Qué compañia desea filtrar?")
-opcionCompanias = value_int_input("\nMenú de compañías telefónicas:\n1. Claro \n2. Tigo \n3. Movistar \n4. Digicel\n5. Salir\nSeleccione una compañia telefónica: ",
+    boolean =True
+    filtro = int(input("¿Qué compañia desea filtrar? \nMenú de compañías telefónicas: \n1. Claro \n2. Tigo \n3. Movistar \n4. Digicel\n5. Salir\nSeleccione la opción que desea en números: "))
+    """while boolean = True:"""
+    if filtro == 1:
+        Companias.sort()
+        print()
 
+    if filtro ==2:
+        Companias.sort()
+        print()
 
+    if filtro ==3:
+        Companias.sort()
+        print()
 
-
-
-
-
+    if filtro ==4:
+        Companias.sort()
+        print()
     
 
-while opcion != 5:
+
+
+
+
+
+
+
+
+
+while: 
+
+def new_func():
+    return " )opcion != 5:
     print("------------BIENVENIDO AL SISTEMA DE CELULIN SV------------")
     print("Acciones disponibles: ")
     print("1. Ingresar nueva venta");
