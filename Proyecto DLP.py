@@ -3,6 +3,8 @@ import os
 import time 
 base_datos = "dbCelulin.txt"
 tablaVentas = [[0] , [0] , [0] , [0] , [0] , [0], [0]];
+tablaCompanias = [[0] , [0] , [0] , [0] , [0] , [0], [0]];
+tablaOrdenadas = [[0] , [0] , [0] , [0] , [0] , [0], [0]];
 opcion = 0;
 
 
@@ -253,42 +255,35 @@ def EliminarDatos():
     borrarPantalla()
     Actualizar();
 
-def MostrarVentas():
-    for registro in tablaVentas:
+def MostrarVentas(tabla):
+    for registro in tabla:
         print(registro[1:])
-
-
 
 def Actualizar():
     with open(base_datos, "w") as db:
         json.dump(tablaVentas, db)
 
+def TablaCompanias(filtro):
+    i = 0;
+    for i in range(len(tablaVentas[1])):
+        if tablaVentas[1][i] == filtro:
+            tablaCompanias[0].append(tablaVentas[0][i]);
+            tablaCompanias[1].append(tablaVentas[1][i]);
+            tablaCompanias[2].append(tablaVentas[2][i]);
+            tablaCompanias[3].append(tablaVentas[3][i]);
+            tablaCompanias[4].append(tablaVentas[4][i]);
+            tablaCompanias[5].append(tablaVentas[5][i]);
+            tablaCompanias[6].append(tablaVentas[6][i]);
+            MostrarVentas(tablaCompanias);
+            break;
+            
+
 def FiltrarCompañia():
     filtro=0
-    boolean = False
-    while boolean == False:
-        filtro=value_int_input(input("¿Qué compañia desea filtrar? \nMenú de compañías telefónicas: \n1. Claro \n2. Tigo \n3. Movistar \n4. Digicel\n5. Salir\nSeleccione la opción que desea en números: "))
-    if filtro == 1:
-        Companias.sort()
-        print()
-
-    if filtro ==2:
-        Companias.sort()
-        print()
-
-    if filtro ==3:
-        Companias.sort()
-        print()
-
-    if filtro ==4:
-        Companias.sort()
-        print()
-
-    if filtro ==5:
-        boolean == True
-
-    else: print("Ingrese otro numero dentro del rango solicitado")
-    boolean = False
+    while True:
+        filtro = Companias();
+        if filtro == 1:
+            TablaCompanias(filtro);            
 
 while opcion != 5:
     print("------------BIENVENIDO AL SISTEMA DE CELULIN SV------------")
@@ -297,7 +292,8 @@ while opcion != 5:
     print("2. Modificar una venta");
     print("3. Eliminar una venta");
     print("4. Mostrar ventas");
-    print("5. Salir");
+    print("5. Filtrar ventas")
+    print("6. Salir");
     opcion = value_int_input("Ingrese una opción : " , "Ingrese un carácter válido:  ")
 
     if opcion == 1:
@@ -309,8 +305,8 @@ while opcion != 5:
     elif opcion == 4:
         MostrarVentas();
     elif opcion == 5:
+        FiltrarCompañia();
+    elif opcion == 6:
         despedida()
     else:
         print("Ingrese una opción válida");
-
-
