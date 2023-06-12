@@ -56,7 +56,7 @@ def despedida():
     os.system(var) 
     print("****************************************") 
     print("*                                      *")
-    print("*    !Gracias por preferirnos¡         *")
+    print("*    ¡Gracias por preferirnos!         *")
     print("*                                      *")
     print("****************************************")
  
@@ -290,21 +290,7 @@ def FiltrarCompañia():
     else: print("Ingrese otro numero dentro del rango solicitado")
     boolean = False
 
-    
-
-
-
-
-
-
-
-
-
-
-while: 
-
-def new_func():
-    return " )opcion != 5:
+while opcion != 5:
     print("------------BIENVENIDO AL SISTEMA DE CELULIN SV------------")
     print("Acciones disponibles: ")
     print("1. Ingresar nueva venta");
