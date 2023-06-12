@@ -9,6 +9,7 @@ tablaOrdenadas = [[0] , [0] , [0] , [0] , [0] , [0], [0]];
 opcion = 0;
 
 
+
 with open(base_datos, "r") as db:
     if db.readline().strip():
         with open(base_datos,"r") as db:
@@ -270,6 +271,50 @@ def Actualizar():
     with open(base_datos, "w") as db:
         json.dump(tablaVentas, db)
 
+def TablaCompanias(filtro):
+    i = 0;
+    for i in range(len(tablaVentas[1])):
+        if tablaVentas[1][i] == filtro:
+            tablaCompanias[0].append(tablaVentas[0][i]);
+            tablaCompanias[1].append(tablaVentas[1][i]);
+            tablaCompanias[2].append(tablaVentas[2][i]);
+            tablaCompanias[3].append(tablaVentas[3][i]);
+            tablaCompanias[4].append(tablaVentas[4][i]);
+            tablaCompanias[5].append(tablaVentas[5][i]);
+            tablaCompanias[6].append(tablaVentas[6][i]);
+            MostrarVentas(tablaCompanias);
+            break;
+            
+
+def FiltrarCompañia():
+    filtro=0
+    while True:
+        filtro = Companias();
+        if filtro == 1:
+            TablaCompanias(filtro); 
+        if filtro == 2:
+            TablaCompanias(filtro);
+        if filtro == 3:
+            TablaCompanias(filtro);
+        if filtro == 4:
+            TablaCompanias(filtro);
+        if filtro == 5:
+            break
+        
+def listaNombres():
+    filtro =0
+    i = 0;
+    for i in range(len(tablaVentas[3])):
+        if tablaVentas[3][i] == filtro:
+            tablaCompanias[0].append(tablaVentas[0][i]);
+            tablaCompanias[1].append(tablaVentas[1][i]);
+            tablaCompanias[2].append(tablaVentas[2][i]);
+            tablaCompanias[3].append(tablaVentas[3][i]);
+            tablaCompanias[4].append(tablaVentas[4][i]);
+            tablaCompanias[5].append(tablaVentas[5][i]);
+            tablaCompanias[6].append(tablaVentas[6][i]);
+            MostrarVentas(tablaCompanias);
+        break;
 
 while opcion != 5:
 
