@@ -7,6 +7,7 @@ base_datos = "dbCelulin.txt"
 tablaVentas = [[0] , [0] , [0] , [0] , [0] , [0], [0]];
 tablaCompanias = [[0] , [0] , [0] , [0] , [0] , [0], [0]];
 tablaOrdenadas = [[0] , [0] , [0] , [0] , [0] , [0], [0]];
+listaOrdenados = [];
 opcion = 0;
 
 
@@ -150,7 +151,7 @@ def Companias():
         elif opcionCompanias == 4:
             return opcionCompanias;
         elif opcionCompanias == 5:
-            opcionCompanias = 5;
+            return opcionCompanias;
 
 def TipoPago():
     opcionPago = 0;
@@ -273,8 +274,6 @@ def MostrarVentas():
     for registro in tablaVentas:
         print(registro[1:])
 
-
-
 def Actualizar():
     with open(base_datos, "w") as db:
         json.dump(tablaVentas, db)
@@ -293,13 +292,13 @@ def TablaCompanias(filtro):
             MostrarVentas(tablaCompanias);
             break;
             
-
 def FiltrarCompañia():
     filtro=0
-    while True:
+    while filtro != 5:
         filtro = Companias();
         if filtro == 1:
             TablaCompanias(filtro); 
+            listaNombres()
         if filtro == 2:
             TablaCompanias(filtro);
         if filtro == 3:
@@ -307,22 +306,20 @@ def FiltrarCompañia():
         if filtro == 4:
             TablaCompanias(filtro);
         if filtro == 5:
-            break
+            borrarPantalla();
+            Actualizar();
         
 def listaNombres():
-    filtro =0
     i = 0;
-    for i in range(len(tablaVentas[3])):
-        if tablaVentas[3][i] == filtro:
-            tablaCompanias[0].append(tablaVentas[0][i]);
-            tablaCompanias[1].append(tablaVentas[1][i]);
-            tablaCompanias[2].append(tablaVentas[2][i]);
-            tablaCompanias[3].append(tablaVentas[3][i]);
-            tablaCompanias[4].append(tablaVentas[4][i]);
-            tablaCompanias[5].append(tablaVentas[5][i]);
-            tablaCompanias[6].append(tablaVentas[6][i]);
-            MostrarVentas(tablaCompanias);
-        break;
+    listaOrdenados = sorted(str(tablaCompanias[3]), reverse=False);
+    for i in range(len(listaOrdenados)):
+        print(listaOrdenados[i]);
+    
+    """for i in range(len(tablaCompanias[3])):
+        if tablaCompanias[3][i] == listaOrdenados[i]:
+            listaOrdenados.append(tablaCompanias[i])
+        break;"""
+    
 
 bienvenida()
 while opcion != 5:
