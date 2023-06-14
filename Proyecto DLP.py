@@ -22,8 +22,6 @@ def Actualizar():
         json.dump(tablaVentas, db)
 #Funciones para el manejo de archivos de texto (Base de datos)
 
-
-
 #Funciones para la bienvenida y despedida del proyecto
 def bienvenida():
     if os.name == "posix":
@@ -322,8 +320,15 @@ def EliminarDatos():
     Actualizar();
 
 def MostrarVentas(tabla):
-    for registro in tabla:
-        print(registro[1:])
+    print("\n")
+    print(f"--- Visualización de los registros solicitados --- \n")
+    listaColumnas = ["Número:", "Compañia:", "Modelo del telefono:", "Propietario:", "Direccion:", "Tipo de pago:", "Valor del pago"]
+    for c in range(len(tabla)):
+        print(listaColumnas[c], end = " | ");
+        for f in range(1, len(tabla[c])):
+            print(tabla[c][f], end = " | ")
+        print("\n")    
+
 #Mantenimientos del sistema CRUD  (Create, Read, Update, Delete)
 
 #Código para la visualización de la interfaz donde se manejan las opciones mediante el menú
