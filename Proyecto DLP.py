@@ -2,6 +2,7 @@ import json
 import os
 import time 
 
+
 base_datos = "dbCelulin.txt"
 tablaVentas = [[0] , [0] , [0] , [0] , [0] , [0], [0]];
 tablaCompanias = [[0] , [0] , [0] , [0] , [0] , [0], [0]];
@@ -21,7 +22,7 @@ if os.name == "posix":
 elif os.name == "ce" or os.name == "nt" or os.name == "dos":
     var = "cls"
 
- 
+
 def bienvenida():
     
     time.sleep(1)
@@ -141,6 +142,7 @@ def Companias():
         opcionCompanias = value_int_input("\nMenú de compañías telefónicas:\n1. Claro \n2. Tigo \n3. Movistar \n4. Digicel\n5. Salir\nSeleccione una compañia telefónica: ", "Por favor ingrese una opción válida, intente de nuevo: ");
         if opcionCompanias == 1:
             return opcionCompanias;
+            
         elif opcionCompanias == 2:
             return opcionCompanias;
         elif opcionCompanias == 3:
@@ -237,6 +239,8 @@ def ModificarVenta():
 def EliminarDatos():
     MostrarVentas()
     numero = value_int_input("\nIngrese el número de venta a eliminar: " , "Ingrese un caracter válido\nIngrese un número de teléfono: ")
+    
+
     for i in range(len(tablaVentas[0])):
         if tablaVentas[0][i] == numero:
             encontrado = True;
@@ -244,25 +248,29 @@ def EliminarDatos():
         else:
             encontrado = False;
     
-    if encontrado == True:
-        tablaVentas[0].pop(i);
-        tablaVentas[1].pop(i);
-        tablaVentas[2].pop(i);
-        tablaVentas[3].pop(i);
-        tablaVentas[4].pop(i);
-        tablaVentas[5].pop(i);
-        tablaVentas[6].pop(i);
+    opcionEliminar = value_int_input("¿Esta seguro que desea eliminar esta venta? \n1. Confirmar\n2. Cancelar\nIngrese su opción: ", "Ingrese una opción válida: ")
+    if opcionEliminar == 1:
+        if encontrado == True:
+            tablaVentas[0].pop(i);
+            tablaVentas[1].pop(i);
+            tablaVentas[2].pop(i);
+            tablaVentas[3].pop(i);
+            tablaVentas[4].pop(i);
+            tablaVentas[5].pop(i);
+            tablaVentas[6].pop(i);
     
-        print("Se ha elimiado exitosamente")
+            print("Se ha elimiado exitosamente")
+        else:
+            print("Numero no encontrado")
+            EliminarDatos()
     else:
-        print("Numero no encontrado")
-        EliminarDatos()
+        print("Operación Cancelada")
 
     borrarPantalla()
     Actualizar();
 
-def MostrarVentas(tabla):
-    for registro in tabla:
+def MostrarVentas():
+    for registro in tablaVentas:
         print(registro[1:])
 
 
@@ -316,6 +324,7 @@ def listaNombres():
             MostrarVentas(tablaCompanias);
         break;
 
+bienvenida()
 while opcion != 5:
 
     print("------------BIENVENIDO AL SISTEMA DE CELULIN SV------------")
