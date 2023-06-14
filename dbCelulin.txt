@@ -1,1 +1,1 @@
-[[0], [0], [0], [0], [0], [0], [0]]
+[[0, 79629226, 78418600, 70434565], [0, 1, 1, 1], [0, "Samsung", "Huawei", "Nokia"], [0, "Daniel", "Carlos", "Guadalupe"], [0, "Quezaltepeque", "San Salvador", "San Salvador"], [0, 2, 2, 1], [0, 25.0, 25.0, 0.0]]
