@@ -2,7 +2,6 @@ import json
 import os
 import time 
 
-
 base_datos = "dbCelulin.txt"
 tablaVentas = [[0] , [0] , [0] , [0] , [0] , [0], [0]];
 tablaCompanias = [[0] , [0] , [0] , [0] , [0] , [0], [0]];
@@ -10,20 +9,25 @@ tablaOrdenadas = [[0] , [0] , [0] , [0] , [0] , [0], [0]];
 listaOrdenados = [];
 opcion = 0;
 
+#Funciones para el manejo de archivos de texto (Base de datos)
+def ReadDB():
+    with open(base_datos, "r") as db:
+        if db.readline().strip():
+            with open(base_datos,"r") as db:
+                tablaVentas = json.load(db);
+                return tablaVentas
 
-
-with open(base_datos, "r") as db:
-    if db.readline().strip():
-        with open(base_datos,"r") as db:
-            tablaVentas = json.load(db);
-
+def Actualizar():
+    with open(base_datos, "w") as db:
+        json.dump(tablaVentas, db)
+#Funciones para el manejo de archivos de texto (Base de datos)
 
 if os.name == "posix":
     var = "clear"       
 elif os.name == "ce" or os.name == "nt" or os.name == "dos":
     var = "cls"
 
-
+#Funciones para la bienvenida y despedida del proyecto
 def bienvenida():
     
     time.sleep(1)
@@ -80,8 +84,7 @@ def despedida():
     print("****************************************")
  
     time.sleep(1)
-    
-
+#Funciones para la bienvenida y despedida del proyecto
 
 def borrarPantalla(): #Definimos la función estableciendo el nombre que queramos
     opcionPantalla = value_int_input("\n¿Desea limpiar su terminal?\n1. Si\n2. No\nIngrese su opción: ", "Ingrese una opción válida: ")
@@ -89,7 +92,8 @@ def borrarPantalla(): #Definimos la función estableciendo el nombre que queramo
         os.system ("cls")
     elif opcionPantalla == 2:
          opcionPantalla == 2
-    
+
+#Funciones para validar entradas de datos en todo el sistema
 def value_int_input (msj1, msj2):
     error_mensaje = msj1
     while True:
@@ -127,6 +131,52 @@ def input_limitado(msj1, msj2, limite):
             return int(entrada)
         error_mensaje = f"Error: La entrada debe tener máximo {limite} caracteres."
         print(error_mensaje);
+#Funciones para validar entradas de datos en todo el sistema
+
+#Funciones para ordenar tablas, filtrar datos, buscar datos, seleccionar datos, etc.
+def TablaCompanias(filtro):
+    i = 0;
+    for i in range(len(tablaVentas[1])):
+        if tablaVentas[1][i] == filtro:
+            tablaCompanias[0].append(tablaVentas[0][i]);
+            tablaCompanias[1].append(tablaVentas[1][i]);
+            tablaCompanias[2].append(tablaVentas[2][i]);
+            tablaCompanias[3].append(tablaVentas[3][i]);
+            tablaCompanias[4].append(tablaVentas[4][i]);
+            tablaCompanias[5].append(tablaVentas[5][i]);
+            tablaCompanias[6].append(tablaVentas[6][i]);
+            
+def FiltrarCompañia():
+    filtro=0
+    while filtro != 5:
+        filtro = Companias();
+        if filtro == 1:
+            TablaCompanias(filtro); 
+            listaNombres()
+        if filtro == 2:
+            TablaCompanias(filtro);
+        if filtro == 3:
+            TablaCompanias(filtro);
+        if filtro == 4:
+            TablaCompanias(filtro);
+        if filtro == 5:
+            borrarPantalla();
+            Actualizar();
+        
+def listaNombres():
+    listaOrdenados = tablaCompanias[3][1:]
+    listaOrdenados = sorted(listaOrdenados, key=str.lower)
+    for i in  range(len(listaOrdenados)):
+         for e in range(len(tablaCompanias[3])):
+             if listaOrdenados[i] == tablaCompanias[3][e]:
+                tablaOrdenadas[0].append(tablaCompanias[0][e])
+                tablaOrdenadas[1].append(tablaCompanias[1][e])
+                tablaOrdenadas[2].append(tablaCompanias[2][e])
+                tablaOrdenadas[3].append(tablaCompanias[3][e])
+                tablaOrdenadas[4].append(tablaCompanias[4][e])
+                tablaOrdenadas[5].append(tablaCompanias[5][e])
+                tablaOrdenadas[6].append(tablaCompanias[6][e])
+    MostrarVentas(tablaOrdenadas)
 
 def buscar_Numero():
     numero = no_spaces(input_limitado("\nIngrese un número de teléfono: " , "Ingrese un caracter válido\nIngrese un número registrado: ", 8));
@@ -166,7 +216,9 @@ def TipoPago():
             return opcionPago, valor;
         elif opcionPago == 3:
             opcionPago = 3;
+#Funciones para ordenar tablas, filtrar datos, buscar datos, seleccionar datos, etc.
 
+#Mantenimientos del sistema CRUD  (Create, Read, Update, Delete)
 def AgregarVenta():
     print("\n------------Ingresar un nuevo registro-------------")
     numtelefono, encontrado, i = buscar_Numero();
@@ -272,54 +324,10 @@ def EliminarDatos():
 def MostrarVentas(tabla):
     for registro in tabla:
         print(registro[1:])
+#Mantenimientos del sistema CRUD  (Create, Read, Update, Delete)
 
-def Actualizar():
-    with open(base_datos, "w") as db:
-        json.dump(tablaVentas, db)
-
-def TablaCompanias(filtro):
-    i = 0;
-    for i in range(len(tablaVentas[1])):
-        if tablaVentas[1][i] == filtro:
-            tablaCompanias[0].append(tablaVentas[0][i]);
-            tablaCompanias[1].append(tablaVentas[1][i]);
-            tablaCompanias[2].append(tablaVentas[2][i]);
-            tablaCompanias[3].append(tablaVentas[3][i]);
-            tablaCompanias[4].append(tablaVentas[4][i]);
-            tablaCompanias[5].append(tablaVentas[5][i]);
-            tablaCompanias[6].append(tablaVentas[6][i]);
-            
-def FiltrarCompañia():
-    filtro=0
-    while filtro != 5:
-        filtro = Companias();
-        if filtro == 1:
-            TablaCompanias(filtro); 
-            listaNombres()
-        if filtro == 2:
-            TablaCompanias(filtro);
-        if filtro == 3:
-            TablaCompanias(filtro);
-        if filtro == 4:
-            TablaCompanias(filtro);
-        if filtro == 5:
-            borrarPantalla();
-            Actualizar();
-        
-def listaNombres():
-    listaOrdenados = tablaCompanias[3][1:]
-    listaOrdenados = sorted(listaOrdenados, key=str.lower)
-    for i in  range(len(listaOrdenados)):
-         for e in range(len(tablaCompanias[3])):
-             if listaOrdenados[i] == tablaCompanias[3][e]:
-                tablaOrdenadas[0].append(tablaCompanias[0][e])
-                tablaOrdenadas[1].append(tablaCompanias[1][e])
-                tablaOrdenadas[2].append(tablaCompanias[2][e])
-                tablaOrdenadas[3].append(tablaCompanias[3][e])
-                tablaOrdenadas[4].append(tablaCompanias[4][e])
-                tablaOrdenadas[5].append(tablaCompanias[5][e])
-                tablaOrdenadas[6].append(tablaCompanias[6][e])
-    MostrarVentas(tablaOrdenadas)
+#Código para la visualización de la interfaz donde se manejan las opciones mediante el menú
+tablaVentas = ReadDB();
 bienvenida()
 while opcion != 5:
 
@@ -328,11 +336,11 @@ while opcion != 5:
     print("1. Ingresar nueva venta");
     print("2. Modificar una venta");
     print("3. Eliminar una venta");
-    print("4. Mostrar ventas");
-    print("5. Filtrar ventas")
+    print("4. Mostrar ventas generales");
+    print("5. Filtrar ventas por compañia telefónica (Ordenados alfabeticamente)")
     print("6. Salir");
     opcion = value_int_input("Ingrese una opción : " , "Ingrese un carácter válido:  ")
-
+ 
     if opcion == 1:
         AgregarVenta();
     elif opcion == 2:
@@ -340,7 +348,7 @@ while opcion != 5:
     elif opcion == 3:
         EliminarDatos();
     elif opcion == 4:
-        MostrarVentas();
+        MostrarVentas(tablaVentas);
     elif opcion == 5:
         FiltrarCompañia();
     elif opcion == 6:
@@ -348,3 +356,4 @@ while opcion != 5:
         break
     else:
         print("Ingrese una opción válida");
+#Código para la visualización de la interfaz donde se manejan las opciones mediante el menú
