@@ -22,14 +22,14 @@ def Actualizar():
         json.dump(tablaVentas, db)
 #Funciones para el manejo de archivos de texto (Base de datos)
 
-if os.name == "posix":
-    var = "clear"       
-elif os.name == "ce" or os.name == "nt" or os.name == "dos":
-    var = "cls"
+
 
 #Funciones para la bienvenida y despedida del proyecto
 def bienvenida():
-    
+    if os.name == "posix":
+        var = "clear"       
+    elif os.name == "ce" or os.name == "nt" or os.name == "dos":
+        var = "cls"
     time.sleep(1)
 
     os.system(var) 
