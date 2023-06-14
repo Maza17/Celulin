@@ -80,6 +80,7 @@ def despedida():
     print("****************************************")
  
     time.sleep(1)
+    
 
 
 def borrarPantalla(): #Definimos la función estableciendo el nombre que queramos
@@ -346,5 +347,6 @@ while opcion != 5:
         FiltrarCompañia();
     elif opcion == 6:
         despedida()
+        break
     else:
         print("Ingrese una opción válida");
