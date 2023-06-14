@@ -311,16 +311,25 @@ def FiltrarCompañia():
             Actualizar();
         
 def listaNombres():
-    i = 0;
-    listaOrdenados = sorted(str(tablaCompanias[3]), reverse=False);
-    for i in range(len(listaOrdenados)):
-        print(listaOrdenados[i]);
-    
-    """for i in range(len(tablaCompanias[3])):
-        if tablaCompanias[3][i] == listaOrdenados[i]:
-            listaOrdenados.append(tablaCompanias[i])
-        break;"""
-    
+    listaOrdenados = tablaCompanias[3][1:]
+    listaOrdenados = sorted(listaOrdenados, key=str.lower)
+    for i in  range(len(listaOrdenados)):
+        print(listaOrdenados[i])
+
+        for i in  range(len(listaOrdenados)):
+             for e in range(len(TablaCompanias[3])):
+                 if listaOrdenados[i] ==TablaCompanias[3][e]:
+                     tablaOrdenadas[0].append(TablaCompanias[0][e])
+                     tablaOrdenadas[1].append(TablaCompanias[1][e])
+                     tablaOrdenadas[2].append(TablaCompanias[2][e])
+                     tablaOrdenadas[3].append(TablaCompanias[3][e])
+                     tablaOrdenadas[4].append(TablaCompanias[4][e])
+                     tablaOrdenadas[5].append(TablaCompanias[5][e])
+                     tablaOrdenadas[6].append(TablaCompanias[6][e])
+
+
+
+
 
 bienvenida()
 while opcion != 5:
