@@ -89,7 +89,7 @@ def borrarPantalla(): #Definimos la función estableciendo el nombre que queramo
     if opcionPantalla == 1 and (lambda: os.name == "ce" or os.name == "nt" or os.name == "dos"):
         os.system ("cls")
     elif opcionPantalla == 2:
-         opcionPantalla == 2
+        opcionPantalla == 2
 
 #Funciones para validar entradas de datos en todo el sistema
 def value_int_input (msj1, msj2):
@@ -169,8 +169,8 @@ def listaNombres():
     listaOrdenados = tablaCompanias[3][1:]
     listaOrdenados = sorted(listaOrdenados, key=str.lower)
     for i in  range(len(listaOrdenados)):
-         for e in range(len(tablaCompanias[3])):
-             if listaOrdenados[i] == tablaCompanias[3][e]:
+        for e in range(len(tablaCompanias[3])):
+            if listaOrdenados[i] == tablaCompanias[3][e]:
                 tablaOrdenadas[0].append(tablaCompanias[0][e])
                 tablaOrdenadas[1].append(tablaCompanias[1][e])
                 tablaOrdenadas[2].append(tablaCompanias[2][e])
@@ -202,7 +202,7 @@ def Companias():
     elif opcionCompanias == 4:
             return opcionCompanias;
     elif opcionCompanias == 5:
-             opcionCompanias = 5
+            opcionCompanias = 5
 
     borrarPantalla()
 
@@ -363,38 +363,38 @@ def MostrarVentas(tabla):
             for f in range(1, len(tabla[c])):
                 print(tabla[c][f], end = " | ")
         print("\n")
-
-
 #Mantenimientos del sistema CRUD  (Create, Read, Update, Delete)
 
 #Código para la visualización de la interfaz donde se manejan las opciones mediante el menú
-tablaVentas = ReadDB();
 bienvenida()
-while opcion != 5:
+def Menu():
+    tablaVentas = ReadDB();
+    opcion=0
+    while opcion != 5:
+        print("------------BIENVENIDO AL SISTEMA DE CELULIN SV------------")
+        print("Acciones disponibles: ")
+        print("1. Ingresar nueva venta");
+        print("2. Modificar una venta");
+        print("3. Eliminar una venta");
+        print("4. Mostrar ventas generales");
+        print("5. Filtrar ventas por compañia telefónica (Ordenados alfabeticamente)")
+        print("6. Salir");
 
-    print("------------BIENVENIDO AL SISTEMA DE CELULIN SV------------")
-    print("Acciones disponibles: ")
-    print("1. Ingresar nueva venta");
-    print("2. Modificar una venta");
-    print("3. Eliminar una venta");
-    print("4. Mostrar ventas generales");
-    print("5. Filtrar ventas por compañia telefónica (Ordenados alfabeticamente)")
-    print("6. Salir");
-    opcion = value_int_input("Ingrese una opción : " , "Ingrese un carácter válido:  ")
- 
-    if opcion == 1:
-        AgregarVenta();
-    elif opcion == 2:
-        ModificarVenta();
-    elif opcion == 3:
-        EliminarDatos();
-    elif opcion == 4:
-        MostrarVentas(tablaVentas);
-    elif opcion == 5:
-        FiltrarCompañia();
-    elif opcion == 6:
-        despedida()
-        break
-    else:
-        print("Ingrese una opción válida");
+        opcion = value_int_input("Ingrese una opción : " , "Ingrese un carácter válido:  ")
+        if opcion == 1:
+            AgregarVenta();
+        elif opcion == 2:
+            ModificarVenta();
+        elif opcion == 3:
+            EliminarDatos();
+        elif opcion == 4:
+            MostrarVentas(tablaVentas);
+        elif opcion == 5:
+            FiltrarCompañia();
+        elif opcion == 6:
+            despedida()
+            break
+        else:
+            print("Ingrese una opción válida");
+Menu()
 #Código para la visualización de la interfaz donde se manejan las opciones mediante el menú
