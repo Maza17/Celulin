@@ -88,9 +88,11 @@ def borrarPantalla(): #Definimos la función estableciendo el nombre que queramo
     opcionPantalla = value_int_input("\n¿Desea limpiar su terminal?\n1. Si\n2. No\nIngrese su opción: ", "Ingrese una opción válida: ")
     if opcionPantalla == 1 and (lambda: os.name == "ce" or os.name == "nt" or os.name == "dos"):
         os.system ("cls")
-        Menu()
+        
     elif opcionPantalla == 2:
         opcionPantalla == 2
+
+    Menu()
 
 #Funciones para validar entradas de datos en todo el sistema
 def value_int_input (msj1, msj2):
