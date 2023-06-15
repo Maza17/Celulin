@@ -143,7 +143,7 @@ def TablaCompanias(filtro):
             tablaCompanias[4].append(tablaVentas[4][i]);
             tablaCompanias[5].append(tablaVentas[5][i]);
             tablaCompanias[6].append(tablaVentas[6][i]);
-            
+    
 def FiltrarCompañia():
     filtro=0
     while filtro != 5:
@@ -151,16 +151,20 @@ def FiltrarCompañia():
         if filtro == 1:
             TablaCompanias(filtro); 
             listaNombres()
-        if filtro == 2:
+        elif filtro == 2:
             TablaCompanias(filtro);
-        if filtro == 3:
+        elif filtro == 3:
             TablaCompanias(filtro);
-        if filtro == 4:
+        elif filtro == 4:
             TablaCompanias(filtro);
-        if filtro == 5:
-            borrarPantalla();
-            Actualizar();
+        else: filtro == 5
+        filtro == 5
         
+
+    
+
+
+
 def listaNombres():
     listaOrdenados = tablaCompanias[3][1:]
     listaOrdenados = sorted(listaOrdenados, key=str.lower)
@@ -188,19 +192,19 @@ def buscar_Numero():
 
 def Companias():
     opcionCompanias = 0;
-    while opcionCompanias != 5:
-        opcionCompanias = value_int_input("\nMenú de compañías telefónicas:\n1. Claro \n2. Tigo \n3. Movistar \n4. Digicel\n5. Salir\nSeleccione una compañia telefónica: ", "Por favor ingrese una opción válida, intente de nuevo: ");
-        if opcionCompanias == 1:
+    opcionCompanias = value_int_input("\nMenú de compañías telefónicas:\n1. Claro \n2. Tigo \n3. Movistar \n4. Digicel\n5. Salir\nSeleccione una compañia telefónica: ", "Por favor ingrese una opción válida, intente de nuevo: ");
+    if opcionCompanias == 1:
             return opcionCompanias;
-            
-        elif opcionCompanias == 2:
+    elif opcionCompanias == 2:
             return opcionCompanias;
-        elif opcionCompanias == 3:
+    elif opcionCompanias == 3:
             return opcionCompanias;
-        elif opcionCompanias == 4:
+    elif opcionCompanias == 4:
             return opcionCompanias;
-        elif opcionCompanias == 5:
-            return opcionCompanias;
+    elif opcionCompanias == 5:
+             opcionCompanias = 5
+
+    borrarPantalla()
 
 def TipoPago():
     opcionPago = 0;
@@ -323,11 +327,43 @@ def MostrarVentas(tabla):
     print("\n")
     print(f"--- Visualización de los registros solicitados --- \n")
     listaColumnas = ["Número:", "Compañia:", "Modelo del telefono:", "Propietario:", "Direccion:", "Tipo de pago:", "Valor del pago"]
+    listaCompanias = ["Claro", "Tigo", "Movistar", "Digicel"];
+    listaTipo = ["Prepago", "Pospago"]
     for c in range(len(tabla)):
         print(listaColumnas[c], end = " | ");
-        for f in range(1, len(tabla[c])):
-            print(tabla[c][f], end = " | ")
-        print("\n")    
+        if c == 1:
+            for f in range(1, len(tabla[c])):
+                if tabla[c][f] == 1:
+                    indice = 0;
+                    print(listaCompanias[indice], end = " | ")
+                    continue
+                elif tabla[c][f] == 2:
+                    indice = 1;
+                    print(listaCompanias[indice], end = " | ")
+                    continue
+                elif tabla[c][f] == 3:
+                    indice = 2;
+                    print(listaCompanias[indice], end = " | ")
+                    continue
+                elif tabla[c][f] == 4:
+                    indice = 3;
+                    print(listaCompanias[indice], end = " | ")
+                    continue
+        elif c == 5:
+                for f in range(1, len(tabla[c])):
+                    if tabla[c][f] == 1:
+                        indice = 0;
+                        print(listaTipo[indice], end = " | ")
+                        continue
+                    elif tabla[c][f] == 2:
+                        indice = 1;
+                        print(listaTipo[indice], end = " | ")
+                        continue
+        else:    
+            for f in range(1, len(tabla[c])):
+                print(tabla[c][f], end = " | ")
+        print("\n")
+
 
 #Mantenimientos del sistema CRUD  (Create, Read, Update, Delete)
 
