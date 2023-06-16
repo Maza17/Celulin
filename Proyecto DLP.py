@@ -19,7 +19,7 @@ def Actualizar():
         json.dump(tablaVentas, db)
 #Funciones para el manejo de archivos de texto (Base de datos)
 
-#Funciones para la bienvenida y despedida del proyecto
+#Funciones para el manejo de la terminal
 def bienvenida():
     if os.name == "posix":
         var = "clear"       
@@ -79,7 +79,6 @@ def despedida():
     print("****************************************")
  
     time.sleep(1)
-#Funciones para la bienvenida y despedida del proyecto
 
 def borrarPantalla(): #Definimos la función estableciendo el nombre que queramos
     opcionPantalla = value_int_input("\n¿Desea limpiar su terminal?\n1. Si\n2. No\nIngrese su opción: ", "Ingrese una opción válida: ")
@@ -87,6 +86,7 @@ def borrarPantalla(): #Definimos la función estableciendo el nombre que queramo
         os.system ("cls")
     elif opcionPantalla == 2:
         opcionPantalla == 2
+#Funciones para el manejo de la terminal
 
 #Funciones para validar entradas de datos en todo el sistema
 def value_int_input (msj1, msj2):
