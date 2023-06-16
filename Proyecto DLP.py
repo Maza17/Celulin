@@ -4,9 +4,6 @@ import time
 
 base_datos = "dbCelulin.txt"
 tablaVentas = [[0] , [0] , [0] , [0] , [0] , [0], [0]];
-tablaCompanias = [[0] , [0] , [0] , [0] , [0] , [0], [0]];
-tablaOrdenadas = [[0] , [0] , [0] , [0] , [0] , [0], [0]];
-listaOrdenados = [];
 opcion = 0;
 
 #Funciones para el manejo de archivos de texto (Base de datos)
@@ -88,11 +85,8 @@ def borrarPantalla(): #Definimos la función estableciendo el nombre que queramo
     opcionPantalla = value_int_input("\n¿Desea limpiar su terminal?\n1. Si\n2. No\nIngrese su opción: ", "Ingrese una opción válida: ")
     if opcionPantalla == 1 and (lambda: os.name == "ce" or os.name == "nt" or os.name == "dos"):
         os.system ("cls")
-        
     elif opcionPantalla == 2:
         opcionPantalla == 2
-
-    Menu()
 
 #Funciones para validar entradas de datos en todo el sistema
 def value_int_input (msj1, msj2):
@@ -135,56 +129,52 @@ def input_limitado(msj1, msj2, limite):
 #Funciones para validar entradas de datos en todo el sistema
 
 #Funciones para ordenar tablas, filtrar datos, buscar datos, seleccionar datos, etc.
-def TablaCompanias(filtro):
+def filtrarCompanias(filtro):
+    tablaC = [[0] , [0] , [0] , [0] , [0] , [0], [0]]
     i = 0;
     for i in range(len(tablaVentas[1])):
         if tablaVentas[1][i] == filtro:
-            tablaCompanias[0].append(tablaVentas[0][i]);
-            tablaCompanias[1].append(tablaVentas[1][i]);
-            tablaCompanias[2].append(tablaVentas[2][i]);
-            tablaCompanias[3].append(tablaVentas[3][i]);
-            tablaCompanias[4].append(tablaVentas[4][i]);
-            tablaCompanias[5].append(tablaVentas[5][i]);
-            tablaCompanias[6].append(tablaVentas[6][i]);
-    
+            tablaC[0].append(tablaVentas[0][i]);
+            tablaC[1].append(tablaVentas[1][i]);
+            tablaC[2].append(tablaVentas[2][i]);
+            tablaC[3].append(tablaVentas[3][i]);
+            tablaC[4].append(tablaVentas[4][i]);
+            tablaC[5].append(tablaVentas[5][i]);
+            tablaC[6].append(tablaVentas[6][i]);
+    return tablaC
+
+def listaNombres(tablaC):
+    tablaO = [[0] , [0] , [0] , [0] , [0] , [0], [0]]
+    listaO = []
+
+    listaO = tablaC[3][1:]
+    listaO = sorted(listaO, key=str.lower)
+    for i in  range(len(listaO)):
+        for e in range(len(tablaC[3])):
+            if listaO[i] == tablaC[3][e]:
+                tablaO[0].append(tablaC[0][e])
+                tablaO[1].append(tablaC[1][e])
+                tablaO[2].append(tablaC[2][e])
+                tablaO[3].append(tablaC[3][e])
+                tablaO[4].append(tablaC[4][e])
+                tablaO[5].append(tablaC[5][e])
+                tablaO[6].append(tablaC[6][e])
+    MostrarVentas(tablaO)
+
 def FiltrarCompañia():
     filtro=0
     while filtro != 5:
         filtro = Companias();
         if filtro == 1:
-            TablaCompanias(filtro); 
-            listaNombres()
+            listaNombres(filtrarCompanias(filtro))
         elif filtro == 2:
-            TablaCompanias(filtro);
-            listaNombres()
+            listaNombres(filtrarCompanias(filtro))
         elif filtro == 3:
-            TablaCompanias(filtro);
-            listaNombres()
+            listaNombres(filtrarCompanias(filtro))
         elif filtro == 4:
-            TablaCompanias(filtro);
-            listaNombres()
-        else: filtro == 5
-        filtro == 5
-        
-
-    
-
-
-
-def listaNombres():
-    listaOrdenados = tablaCompanias[3][1:]
-    listaOrdenados = sorted(listaOrdenados, key=str.lower)
-    for i in  range(len(listaOrdenados)):
-        for e in range(len(tablaCompanias[3])):
-            if listaOrdenados[i] == tablaCompanias[3][e]:
-                tablaOrdenadas[0].append(tablaCompanias[0][e])
-                tablaOrdenadas[1].append(tablaCompanias[1][e])
-                tablaOrdenadas[2].append(tablaCompanias[2][e])
-                tablaOrdenadas[3].append(tablaCompanias[3][e])
-                tablaOrdenadas[4].append(tablaCompanias[4][e])
-                tablaOrdenadas[5].append(tablaCompanias[5][e])
-                tablaOrdenadas[6].append(tablaCompanias[6][e])
-    MostrarVentas(tablaOrdenadas)
+            listaNombres(filtrarCompanias(filtro))
+        elif filtro == 5: 
+            borrarPantalla();
 
 def buscar_Numero():
     numero = no_spaces(input_limitado("\nIngrese un número de teléfono: " , "Ingrese un caracter válido\nIngrese un número registrado: ", 8));
@@ -198,19 +188,19 @@ def buscar_Numero():
 
 def Companias():
     opcionCompanias = 0;
-    opcionCompanias = value_int_input("\nMenú de compañías telefónicas:\n1. Claro \n2. Tigo \n3. Movistar \n4. Digicel\n5. Salir\nSeleccione una compañia telefónica: ", "Por favor ingrese una opción válida, intente de nuevo: ");
+    opcionCompanias = input_limitado("\nMenú de compañías telefónicas:\n1. Claro \n2. Tigo \n3. Movistar \n4. Digicel\n5. Salir\nSeleccione una compañia telefónica: ", "Por favor ingrese una opción válida, intente de nuevo: ", 1);
     if opcionCompanias == 1:
-            return opcionCompanias;
+        return opcionCompanias;
     elif opcionCompanias == 2:
-            return opcionCompanias;
+        return opcionCompanias;
     elif opcionCompanias == 3:
-            return opcionCompanias;
+        return opcionCompanias;
     elif opcionCompanias == 4:
-            return opcionCompanias;
+        return opcionCompanias;
     elif opcionCompanias == 5:
-            opcionCompanias = 5
-
-    borrarPantalla()
+        return opcionCompanias;
+    else:
+        print("Ingrese un numero dentro del rango \n")
 
 def TipoPago():
     opcionPago = 0;
@@ -373,34 +363,31 @@ def MostrarVentas(tabla):
 
 #Código para la visualización de la interfaz donde se manejan las opciones mediante el menú
 bienvenida()
-def Menu():
-    tablaVentas = ReadDB();
-    opcion=0
-    while opcion != 5:
-        print("------------BIENVENIDO AL SISTEMA DE CELULIN SV------------")
-        print("Acciones disponibles: ")
-        print("1. Ingresar nueva venta");
-        print("2. Modificar una venta");
-        print("3. Eliminar una venta");
-        print("4. Mostrar ventas generales");
-        print("5. Filtrar ventas por compañia telefónica (Ordenados alfabeticamente)")
-        print("6. Salir");
+tablaVentas = ReadDB();
+opcion=0
+while opcion != 6:
+    print("------------BIENVENIDO AL SISTEMA DE CELULIN SV------------")
+    print("Acciones disponibles: ")
+    print("1. Ingresar nueva venta");
+    print("2. Modificar una venta");
+    print("3. Eliminar una venta");
+    print("4. Mostrar ventas generales");
+    print("5. Filtrar ventas por compañia telefónica (Ordenados alfabeticamente)")
+    print("6. Salir");
 
-        opcion = value_int_input("Ingrese una opción : " , "Ingrese un carácter válido:  ")
-        if opcion == 1:
-            AgregarVenta();
-        elif opcion == 2:
-            ModificarVenta();
-        elif opcion == 3:
-            EliminarDatos();
-        elif opcion == 4:
-            MostrarVentas(tablaVentas);
-        elif opcion == 5:
-            FiltrarCompañia();
-        elif opcion == 6:
-            despedida()
-            break
-        else:
-            print("Ingrese una opción válida");
-Menu()
+    opcion = value_int_input("Ingrese una opción : " , "Ingrese un carácter válido:  ")
+    if opcion == 1:
+        AgregarVenta();
+    elif opcion == 2:
+        ModificarVenta();
+    elif opcion == 3:
+        EliminarDatos();
+    elif opcion == 4:
+        MostrarVentas(tablaVentas);
+    elif opcion == 5:
+        FiltrarCompañia();
+    elif opcion == 6:
+        despedida()
+    else:
+        print("Ingrese una opción válida");
 #Código para la visualización de la interfaz donde se manejan las opciones mediante el menú
