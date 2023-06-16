@@ -161,7 +161,7 @@ def listaNombres(tablaC):
                 tablaO[6].append(tablaC[6][e])
     MostrarVentas(tablaO)
 
-def FiltrarCompañia():
+def ordenarVentas():
     filtro=0
     while filtro != 5:
         filtro = Companias();
@@ -385,7 +385,7 @@ while opcion != 6:
     elif opcion == 4:
         MostrarVentas(tablaVentas);
     elif opcion == 5:
-        FiltrarCompañia();
+        ordenarVentas();
     elif opcion == 6:
         despedida()
     else:
