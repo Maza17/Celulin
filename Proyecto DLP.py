@@ -20,66 +20,6 @@ def Actualizar():
 #Funciones para el manejo de archivos de texto (Base de datos)
 
 #Funciones para el manejo de la terminal
-def bienvenida():
-    if os.name == "posix":
-        var = "clear"       
-    elif os.name == "ce" or os.name == "nt" or os.name == "dos":
-        var = "cls"
-    time.sleep(1)
-
-    os.system(var) 
-    print("****************************************") 
-    print("*                                      *")
-    print("*    ¡Bienvenidos a Sistema Celulin!   *")
-    print("*                                      *")
-    print("****************************************")
- 
-    time.sleep(1)
-    os.system(var)
- 
-    print("****************************************")
-    print("*                                      *")
-    print("*      Aquí se almacenarán datos       *")
-    print("*                                      *")
-    print("****************************************")
- 
-    time.sleep(1)
-    os.system(var)
- 
-    print("****************************************")
-    print("*                                      *")
-    print("*      De las ventas realizadas.       *")
-    print("*                                      *")
-    print("****************************************")
- 
-    time.sleep(1)
-
-def despedida():
-    if os.name == "posix":
-        var = "clear"       
-    elif os.name == "ce" or os.name == "nt" or os.name == "dos":
-        var = "cls"
- 
-    time.sleep(1)
-
-    os.system(var) 
-    print("****************************************") 
-    print("*                                      *")
-    print("*    ¡Gracias por preferirnos!         *")
-    print("*                                      *")
-    print("****************************************")
- 
-    time.sleep(1)
-    os.system(var)
- 
-    print("****************************************")
-    print("*                                      *")
-    print("*      Que tenga un lindo día :')      *")
-    print("*                                      *")
-    print("****************************************")
- 
-    time.sleep(1)
-
 def borrarPantalla(): #Definimos la función estableciendo el nombre que queramos
     opcionPantalla = value_int_input("\n¿Desea limpiar su terminal?\n1. Si\n2. No\nIngrese su opción: ", "Ingrese una opción válida: ")
     if opcionPantalla == 1 and (lambda: os.name == "ce" or os.name == "nt" or os.name == "dos"):
@@ -384,11 +324,6 @@ def MostrarVentas(tabla):
 #Mantenimientos del sistema CRUD  (Create, Read, Update, Delete)
 
 #Código para la visualización de la interfaz donde se manejan las opciones mediante el menú
-bienvenida()
-if os.name == "posix":
-   os.system ("clear")
-elif os.name == "ce" or os.name == "nt" or os.name == "dos":
-   os.system ("cls")
 tablaVentas = ReadDB();
 while opcion != 6:
     print("------------BIENVENIDO AL SISTEMA DE CELULIN SV------------")
@@ -412,7 +347,7 @@ while opcion != 6:
     elif opcion == 5:
         ordenarVentas();
     elif opcion == 6:
-        despedida()
+        break
     else:
         print("Ingrese una opción válida");
 #Código para la visualización de la interfaz donde se manejan las opciones mediante el menú
