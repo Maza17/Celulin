@@ -362,15 +362,12 @@ def MostrarVentas(tabla):
 #Mantenimientos del sistema CRUD  (Create, Read, Update, Delete)
 
 #Código para la visualización de la interfaz donde se manejan las opciones mediante el menú
-
-
 bienvenida()
 if os.name == "posix":
    os.system ("clear")
 elif os.name == "ce" or os.name == "nt" or os.name == "dos":
    os.system ("cls")
 tablaVentas = ReadDB();
-opcion=0
 while opcion != 6:
     print("------------BIENVENIDO AL SISTEMA DE CELULIN SV------------")
     print("Acciones disponibles: ")
