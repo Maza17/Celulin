@@ -131,9 +131,11 @@ def input_limitado(msj1, msj2, limite):
 #Funciones para ordenar tablas, filtrar datos, buscar datos, seleccionar datos, etc.
 def filtrarCompanias(filtro):
     tablaC = [[0] , [0] , [0] , [0] , [0] , [0], [0]]
+    encontrado = False;
     i = 0;
     for i in range(len(tablaVentas[1])):
         if tablaVentas[1][i] == filtro:
+            encontrado = True
             tablaC[0].append(tablaVentas[0][i]);
             tablaC[1].append(tablaVentas[1][i]);
             tablaC[2].append(tablaVentas[2][i]);
@@ -141,7 +143,11 @@ def filtrarCompanias(filtro):
             tablaC[4].append(tablaVentas[4][i]);
             tablaC[5].append(tablaVentas[5][i]);
             tablaC[6].append(tablaVentas[6][i]);
-    return tablaC
+
+    if encontrado == False:
+        print("No existen registros disponibles para esta compañía, ingrese otra opción.")
+    elif encontrado == True:
+        return tablaC
 
 def listaNombres(tablaC):
     tablaO = [[0] , [0] , [0] , [0] , [0] , [0], [0]]
@@ -166,13 +172,29 @@ def ordenarVentas():
     while filtro != 5:
         filtro = Companias();
         if filtro == 1:
-            listaNombres(filtrarCompanias(filtro))
+            tablaC = filtrarCompanias(filtro)
+            if tablaC == None:
+                continue;
+            else:
+                listaNombres(tablaC)
         elif filtro == 2:
-            listaNombres(filtrarCompanias(filtro))
+            tablaC = filtrarCompanias(filtro)
+            if tablaC == None:
+                continue;
+            else:
+                listaNombres(tablaC)
         elif filtro == 3:
-            listaNombres(filtrarCompanias(filtro))
+            tablaC = filtrarCompanias(filtro)
+            if tablaC == None:
+                continue;
+            else:
+                listaNombres(tablaC)
         elif filtro == 4:
-            listaNombres(filtrarCompanias(filtro))
+            tablaC = filtrarCompanias(filtro)
+            if tablaC == None:
+                continue;
+            else:
+                listaNombres(tablaC)
         elif filtro == 5: 
             borrarPantalla();
 
